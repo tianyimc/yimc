@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>乙巳蛇年新年活动 | MCE服务器</title>
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <script type="text/javascript" src="index.js"></script>
+  </audio>
+</head>
+
+<body translate="no">
+  <div class="container">
+    <div class="pages">
+      <div class="page one">
+        <audio src="music/China-X.mp3" id="aud" autoplay="autoplay" controls="controls" preload="auto"></audio>
+        <h1 class="thetitle">乙巳蛇年新年活动</h1>
+        <h2 class="cotitle">MCE服务器</h2>
+        <div>
+          <button onClick="slide('next')">继续</button>
+          <button onClick="window.location.href='mute.html'">静音</button>
+        </div>
+      </div>
+      <div class="page two">
+        <h1>感谢您一直以来的支持</h1>
+        <p>特别是在服务器中取得过快乐的您
+          <br />
+          <center>
+            无论您——是否奉献
+          </center>
+        </p>
+        <div>
+          <button onClick="slide('next')">继续</button>
+          <button onClick="slide('prev')">返回</button>
+        </div>
+      </div>
+      <div class="page three">
+        <h1>2021春节活动</h1>
+        <div>
+          <button onClick="slide('next')">继续</button>
+          <button onClick="slide('prev')">返回</button>
+        </div>
+      </div>
+      <div class="page four">
+        <h1>2022国庆合照</h1>
+        <div>
+          <button onClick="slide('next')">继续</button>
+        </div>
+      </div>
+      <div class="page five">
+        <div>
+          <button onClick="slide('next')">继续</button>
+        </div>
+        <br>
+        <h1 id="fifthtitle">2023春节活动合照</h1>
+      </div>
+      <div class="page six">
+        <div>
+          <button onClick="slide('next')">继续</button>
+        </div>
+        <h1>2023国庆合照</h1>
+      </div>
+      <div class="page seven">
+        <h1 id="sixthtitle">2023周年庆合照</h1>
+        <br>
+        <br>
+        <br>
+        <div>
+          <button onClick="slide('next')">继续</button>
+        </div>
+      </div>
+      <div class="page eight">
+        <!--应该是没合照的绚烂会炸的红石烟花的那一次，要问别人要一下照片-->
+        <div>
+          <button onClick="slide('next')">继续</button>
+        </div>
+        <h1 id="sixthtitle">2024春节活动</h1>
+      </div>
+      <div class="page nine">
+        <h1 id="sixthtitle">2024周年庆合照</h1>
+        <div>
+          <button onClick="slide('next')">继续</button>
+        </div>
+      </div>
+      <div class="page eight">
+        <h1 id="sixthtitle">2025春节活动</h1>
+        <div>
+          <button onClick="slide('next')">继续</button>
+        </div>
+      </div>
+      <div class="page end">
+        <h1>MCE服务器</h1>
+        <h3>我们相约——2025</h3>
+        <p>还是那个MCE，还是那个Minecraft！</p>
+        <div>
+          <button onClick="slide('next')">结束？</button>
+        </div>
+      </div>
+      <div class="page bye">
+        <h1>MCE服务器农历乙巳蛇年春节活动</h1>
+        <h3></h3>
+        <div>
+          <a href="https://jq.qq.com/?_wv=1027&k=g7D0wT0T">
+            <center>
+              <button>我们的新年！</button>
+            </center>
+          </a>
+          <br />
+          <br />
+          <p class="count"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const pages = document.querySelectorAll(".page");
+    const translateAmount = 100;
+    let translate = 0;
+
+    slide = direction => {
+
+      direction === "next" ? translate -= translateAmount : translate += translateAmount;
+
+      pages.forEach(
+        pages => pages.style.transform = `translateY(${translate}%)`);
+
+    };
+    //js来自网络
+  </script>
+
+
+</body>
+
+</html>
