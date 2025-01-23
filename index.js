@@ -64,3 +64,6 @@ function startSlide() {
     slideTo(chosenSlideNumber % 4 + 1); // 每次切换到下一个幻灯片 
   }, 3000); // 每隔 3 秒自动切换幻灯片 
 }
+//手机用户转跳到旧版网页
+if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    window.location.href = "index_old.html";}
