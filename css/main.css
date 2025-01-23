@@ -178,7 +178,7 @@ button {
     padding: 8px;
     width: 100px;
     border: 2px solid rgba(152, 214, 225, 0.5);
-    background-color: rgba(152, 214, 225, 0.5);
+    background-color: transparent;
     color: rgb(94, 123, 255);
     cursor: pointer;
     border-radius: 5px;
