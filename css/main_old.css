@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+    /* 浏览器不支持，显示上方 */
+    background-image: linear-gradient(to bottom right, #9fc9f7, #7a4aab);
+    font-family: "SourceSansMed";
+    font-family: "SourceSansNor";
+}
+
+.headLine {
+    text-align: center;
+}
+
+.oio {
+    border: 0;
+    padding-top: 5px;
+    background: linear-gradient(to right, transparent, #811dcd, transparent);
+}
+
+.textPart1 {
+    border: 2px solid #5d5858;
+    padding: 10px 40px;
+    background-image: linear-gradient(to bottom left, #8d7fc3, #5892a1);
+    width: 300px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+.textPart2 {
+    border: 2px solid #5d5858;
+    padding: 10px 40px;
+    background-image: linear-gradient(to bottom left, #8d7fc3, #5892a1);
+    width: 300px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.textPart3 {
+    border: 2px solid #5d5858;
+    padding: 10px 40px;
+    background-image: linear-gradient(to bottom left, #8d7fc3, #5892a1);
+    width: 300px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+@font-face {
+    font-family: "SourceSansMed";
+    src: local("SourceHanSansCN-Medium") local("SourceHanSansCN-Medium2") local(SourceHanSans-Medium) local(SourceHanSansMedium) local(SourceHanSansMed) url("font/SourceSansMed.otf");
+    font-weight: bold;
+    /*设置显示为粗体时使用此字体 */
+
+}
+
+@font-face {
+    font-family: "SourceSansNor";
+    src: local("SourceHanSansCN-Normal") local("SourceHanSansCN-Normal2") local(SourceHanSans-Normal) local(SourceHanSansNormal) local(SourceHanSansNor) url("font/SourceSansNor.otf");
+    font-weight: normal;
+    /* 设置显示为普通字体时使用此字体 */
+}
