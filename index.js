@@ -64,6 +64,33 @@ function startSlide() {
     slideTo(chosenSlideNumber % 4 + 1); // 每次切换到下一个幻灯片 
   }, 3000); // 每隔 3 秒自动切换幻灯片 
 }
-//手机用户转跳到旧版网页
-if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    window.location.href = "index_old.html";}
+        //手机用户转跳到旧版网页（开始）
+        window.onload = function () {
+
+          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+
+
+          // 检查userAgent字符串中是否包含特定的手机标识  
+
+          var isMobile = /Mobile|iPhone|iPad|iPod|Android/i.test(userAgent);
+
+
+
+          if (isMobile) {
+
+              // 如果是移动设备，跳转到移动版网页  
+              document.write("移动设备");
+              window.location.href = 'index_old.html';
+
+          }
+          else {
+
+              // 如果是桌面设备，跳转到桌面版网页  啥也不干
+              //document.write("桌面设备");
+              //window.location.href = '';
+
+          }
+
+      };
+      //手机用户转跳到旧版网页（结束）
