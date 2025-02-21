@@ -91,7 +91,7 @@ window.addEventListener(
 );
 
 setTimeout(function () {
-  $("#loading-text").html("字体及文件加载可能需要一定时间，已通过赛博大善人加速！");
+  $("#loading-text").html("<p>字体及文件加载可能需要一定时间，已通过赛博大善人加速！</p><br><script src=\"https://sdk.jinrishici.com/v2/browser/jinrishici.js\"></script>");
 }, 3000);
 
 // 新春灯笼 （ 需要时可取消注释 ）

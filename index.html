@@ -21,7 +21,7 @@
     <!-- HarmonyOS Sans -->
     <!-- 本站 CDN 已开启防盗链，非本站域名不可访问，请更改链接为下方内容，否则自定义字体将失效 -->
     <!-- https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css -->
-    <link rel="stylesheet" href="https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" />
+    <link rel="stylesheet" href="font/regular.css" />
     <!-- 引入样式 -->
     <link rel="stylesheet" type="text/css"
         href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/bootstrap/5.1.0/css/bootstrap.min.css">
@@ -29,8 +29,8 @@
     <link rel="stylesheet" type="text/css" href="./css/mobile.css">
     <link rel="stylesheet" type="text/css" href="./css/loading.css">
     <link rel="stylesheet" type="text/css" href="./css/animation.css">
-    <link rel="icon" href="./favicon.ico">
-    <link rel="apple-touch-icon" href="./img/icon/apple-touch-icon.png">
+    <link rel="icon" href="resources/www_logo.png" sizes="16x16" type="image/png">
+    <link rel="apple-touch-icon" href="resources/www_logo.png">
     <!-- Izitoast -->
     <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/izitoast/1.4.0/css/iziToast.min.css">
     <script type="text/javascript"
@@ -73,7 +73,11 @@
             </div>
             <div class="loading-word">
                 <p class="loading-title" id="loading-title">YIMC | Index</p>
-                <span id="loading-text">Loading......</span>
+                <span id="loading-text">
+                    Loading...
+                    <span id="jinrishici-sentence">正在加载今日诗词....</span>
+                    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" harset="utf-8"></script>
+                </span>
             </div>
         </div>
     </div>
