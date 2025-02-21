@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIANYIMC</title>
+</head>
+
+<body>
+    <p>
+    <h1>未转跳手动选择</h1>
+    <br>
+    <a href="index.html">电脑、平板等大屏设备用户</a>
+    <br>
+    <a href="index_old.html">手机等小屏设备用户</a>
+    </p>
+    <script>
+        //手机用户转跳到旧版网页（开始）
+        window.onload = function () {
+
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+
+
+            // 检查userAgent字符串中是否包含特定的手机标识  
+
+            var isMobile = /Mobile|iPhone|iPad|iPod|Android/i.test(userAgent);
+
+
+
+            if (isMobile) {
+
+                // 如果是移动设备，跳转到移动版网页  
+                document.write("移动设备");
+                window.location.href = 'index_old.html';
+
+            }
+            else {
+
+                // 如果是桌面设备，跳转到桌面版网页  啥也不干
+                //document.write("桌面设备");
+                //window.location.href = '';
+
+            }
+
+        };
+        //手机用户转跳到旧版网页（结束）
+    </script>
+</body>
+
+</html>

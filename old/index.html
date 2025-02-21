@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yimc</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="/resources/www_logo.png" sizes="16x16" type="image/png">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="click-section">
+            <div id="drawerboxes">
+                <div class="drawerbox active">
+                    <button class="drawer-btn active" onclick="slideTo(1)">TIANYIMC<span
+                            class="drawer-head">1</span></button>
+                </div>
+                <div class="drawerbox">
+                    <button class="drawer-btn" onclick="slideTo(2)">MCE Minecraft<span
+                            class="drawer-head">2</span></button>
+                </div>
+                <div class="drawerbox">
+                    <button class="drawer-btn" onclick="slideTo(3)">MCE Celebrations<span
+                            class="drawer-head">3</span></button>
+                </div>
+                <div class="drawerbox">
+                    <button class="drawer-btn" onclick="slideTo(4)">ABOUT<span class="drawer-head">4</span></button>
+                </div>
+            </div>
+        </div>
+        <div id="slide-section">
+            <div id="slide-bar">
+                <div id="bar"></div>
+            </div>
+            <div id="card-section">
+                <div id="card1" class="card">
+                    <div class="card-small-title">TIANYIMC</div>
+                    <div class="card-title">什么是TIANYIMC？</div>
+                    <div class="card-content">
+                        <p>
+                            马克思曾说：“代替那存在着阶级和阶级对立的资产阶级旧社会的，将是这样一个联合体，在那里，每个人的自由发展是一切人的自由发展的条件。”
+                            而TIANYIMC与这句话一点关系也没有。
+                        </p>
+                    </div>
+                    <div class="button">
+                        <button class="card-btn" onclick="window.open('https://blog.yimc.top/')">进入Blog</button>
+                    </div>
+                    <div class="card-img">
+                        <!--<img src="./img/17.gif" alt="">-->
+                    </div>
+                </div>
+                <div id="card2" class="card">
+                    <div class="card-small-title">TIANYIMC</div>
+                    <div class="card-title">MCE Minecraft</div>
+                    <!--
+                    <div class="card-img">
+                        <img src="css/img/08.gif" alt="">
+                    </div>
+                -->
+                    <div class="card-content">这场惊天的行动，将是我们的世界！点击加入吧！
+                        点击下方也可以查看《MCE服务器最终用户许可协议》，请根据群内公告确定最新版本，截止2025.2初，为总第12版</div>
+                    <div class="button">
+                        <button class="card-btn"
+                            onclick="window.open('http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=yvSG6V2AJctNiIc5s3NN-M7Iu-u0bU9E&authKey=PKohqE8uoSoNwM0RdweZbH3k3LuJTkvpe04K%2FODSMfzfIbUsIn4KzjBcOJee14T6&noverify=0&group_code=1093647580')">点击入群</button>
+                        <button class="card-btn" onclick="window.open('mce/eula/12th.html')">12版协议</button>
+                    </div>
+                </div>
+                <div id="card3" class="card">
+                    <div class="card-small-title">MCE MINECRAFT</div>
+                    <div class="card-title">MCE Celebrations</div>
+                    <div class="card-content">一年两度的超绝庆典，春节活动游戏的温暖与烟花的绚烂为你照亮寒冷的严冬
+                        ；夏季周年庆典体验的清凉与合照的欢乐为你驱散炎热的夏日。</div>
+                    <div class="toSF">
+                        <!--春节活动已结束<a href="mce/springFestival/2025/" class="toSF">春节活动进行中，点击查看彩蛋页面</a>-->
+                    </div>
+                    <div class="card-img">
+                        <!--<img src="./img/03.gif" alt="">-->
+                    </div>
+                </div>
+                <div id="card4" class="card">
+                    <div class="card-small-title"></div>
+                    <div class="card-title">关于</div>
+                    <div class="card-content">MCE是一个Minecraft服务器，由一群热爱Minecraft的玩家组成，
+                        我们致力于打造一个友好的游戏环境，让玩家们在这里找到快乐。
+                        TIANYIMC则什么也不是，既不是服主也不是网站的所有人。（确信）
+                    </div>
+                    <div class="a">
+                        <a href="mailto:yimc_receive@outlook.com" class="toContact">联系我（通过邮箱）</a><br>
+                        <a
+                            href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=yvSG6V2AJctNiIc5s3NN-M7Iu-u0bU9E&authKey=PKohqE8uoSoNwM0RdweZbH3k3LuJTkvpe04K%2FODSMfzfIbUsIn4KzjBcOJee14T6&noverify=0&group_code=1093647580">联系我们（通过QQ）</a><br>
+                        <a href="https://icp.gov.moe/?keyword=20251234" target="_blank">萌ICP备20251234号</a>
+                    </div>
+                    <div class="card-img">
+                        <!--<img src="./img/04.gif" alt="">-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
