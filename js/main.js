@@ -358,8 +358,8 @@ $("#switchmore").on("click", function () {
     $("#change1").html("哎呀，这都被你发现了（ 再点击一次可关闭 ）");
   } else {
     $("#container").attr("class", "container");
-    $("#change").html("Hello&nbsp;World&nbsp;!");
-    $("#change1").html("一个不正经的Up");
+    $("#change").html("诗词被李白吃了！刷新恢复哦~");
+    $("#change1").html("其实tianyimc | 主页");
   }
 });
 
