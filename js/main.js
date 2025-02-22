@@ -91,7 +91,7 @@ window.addEventListener(
 );
 
 setTimeout(function () {
-  $("#loading-text").html("<p>字体及文件加载可能需要一定时间，已通过赛博大善人加速！</p><br><p>如有需要，点击<a href=\"https://blog.yimc.top/\">【这里】</a>直接访问Blog页面</p>");
+  $("#loading-text").html("<p>字体及文件加载可能需要一定时间，已通过赛博大善人加速！<br>如有需要，点击<a href=\"https://blog.yimc.top/\">【这里】</a>直接访问Blog页面</p>");
 }, 3000);
 
 // 新春灯笼 （ 需要时可取消注释 ）
