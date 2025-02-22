@@ -407,8 +407,8 @@ window.addEventListener("load", function () {
     if (window.innerWidth <= 990) {
       //移动端隐藏更多页面
       $("#container").attr("class", "container");
-      $("#change").html("Hello&nbsp;World&nbsp;!");
-      $("#change1").html("一个不正经的Up");
+      $("#change").html("诗词被李白吃了！刷新恢复哦~");
+      $("#change1").html("其实tianyimc | 主页");
 
       //移动端隐藏弹窗页面
       $("#box").css("display", "none");
