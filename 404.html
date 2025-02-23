@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="resources/www_logo.png" type="image/png">
     <title>404 Not Found | YIMC Index</title>
+    <!-- 引入 BootCDN 提供的 Bootstrap CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -19,14 +21,20 @@
             color: #333;
         }
 
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
+        .container {
+            text-align: center;
+            padding: 2em;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
         }
 
-        p {
-            font-size: 1.2em;
-            margin: 0.5em 0;
+        .footer {
+            margin-top: 2em;
+            font-size: 0.9em;
+            color: #666;
         }
 
         a {
@@ -38,25 +46,25 @@
             text-decoration: underline;
         }
 
-        .container {
-            text-align: center;
-            padding: 2em;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5em;
+            }
 
-        .footer {
-            margin-top: 2em;
-            font-size: 0.9em;
-            color: #666;
+            p {
+                font-size: 1em;
+            }
+
+            .container {
+                padding: 1em;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h2>404 Not Found | YIMC Index</h2>
+        <h2>404 Not Found | 未知页面</h2>
         <hr>
         <p><b>你来到了一片荒漠，这里没有任何内容</b></p>
         <p>请返回 <a href="index.html">首页</a></p>
@@ -66,7 +74,18 @@
     </div>
     <div class="footer">
         &copy; 2025 YIMC.TOP. All rights reserved(this page of Index only).
+        <br>
+        <div style="text-align: center;">
+            <img src="/resources/moe_icon120.png" style="width:16px;height:16px;vertical-align:middle;">
+            <a href="https://icp.gov.moe/?keyword=20251234"
+                style="color: inherit; text-decoration: none;">萌ICP备20251234号</a>
+        </div>
     </div>
+
+    <!-- 引入 BootCDN 提供的 Bootstrap JS 和依赖 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
