@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="resources/www_logo.png" type="image/png">
+    <title>验证您收到的邮件邮箱真实性 | YIMC Index</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2em;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .footer {
+            margin-top: 2em;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .container {
+                padding: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>验证您收到的邮件邮箱真实性</h2>
+        <hr>
+        <p><b>隐私安全与防诈骗是重要的课题，您可以在下方检索来自本站的真实邮箱</b></p>
+        <p>
+            如果您向本站提供的邮箱发送了消息，您收到回复时发信人可能不同，您可以在下方检索来自本站的真实邮箱，以验证您收到的邮件是否真实
+            <br>
+        <div class="input-group my-3">
+            <input type="text" id="emailInput" class="form-control" placeholder="请输入邮箱地址">
+            <div class="input-group-append">
+                <button class="btn btn-primary" onclick="verifyEmail()">验证</button>
+            </div>
+        </div>
+        <span id="result"></span>
+        </p>
+        <p>
+            <a href="overview.html">跳转到总览网页</a>
+        </p>
+        <hr>
+        <span id="jinrishici-sentence">正在加载今日诗词....</span>
+        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+    <div class="footer">
+        &copy; 2025 YIMC.TOP. All rights reserved(this page of Index only).
+    </div>
+
+    <!-- 引入 Bootstrap JS 和依赖 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            if (email) {
+                document.getElementById('emailInput').value = email;
+            }
+        });
+
+        async function verifyEmail() {
+            const emailInput = document.getElementById('emailInput').value;
+            const result = document.getElementById('result');
+
+            // 验证邮箱格式
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput)) {
+                result.textContent = '请输入有效的邮箱地址。';
+                result.style.color = 'red';
+                return;
+            }
+
+            try {
+                const response = await fetch('true.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const validEmails = await response.json();
+
+                if (validEmails.includes(emailInput)) {
+                    result.textContent = '邮箱验证成功，邮件真实。';
+                    result.style.color = 'green';
+                } else {
+                    result.textContent = '邮箱验证失败，邮件可能是伪造的。';
+                    result.style.color = 'red';
+                }
+            } catch (error) {
+                result.textContent = '无法加载验证数据，请稍后再试。';
+                result.style.color = 'yellow';
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>
