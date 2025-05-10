@@ -66,7 +66,7 @@
     <div class="container">
         <h2>MCENeo Program</h2>
         <hr>
-        <p><b>内部计划（Inner Project）服务器的玩家许可是邀请制的，您可以在此查看是否收到了邀请</b></p>
+        <p><b>内部计划（Project Inner）服务器的玩家许可是邀请制的，您可以在此查看是否收到了邀请</b></p>
         <p>
             在下方输入您的QQ号，如果您收到了邀请或主动受邀通过，您将会看到自己的游戏名。
             <br>
@@ -78,8 +78,9 @@
         </div>
         <span id="result"></span>
         </p>
-        <p>
-            <!-- <a href="overview.html"></a> -->
+        <p id="applyNow" style="text-align: center; margin-top: 1em; font-size: 0.9em; color: #666;">
+            或者
+            <button class="btn btn-outline-secondary btn-sm" onclick="applyNow()">现在申请</button>
         </p>
         <hr>
         <span id="jinrishici-sentence">正在加载今日诗词....</span>
@@ -136,7 +137,7 @@
                     result.innerHTML = `验证成功！<br>您的游戏名是：${user.username}<br>许可证：${user.licence}`;
                     result.style.color = 'green';
                 } else {
-                    result.textContent = '验证失败，您暂未被邀请或暂未通过。';
+                    result.textContent = '验证失败，您暂未被邀请或申请暂未通过。';
                     result.style.color = 'red';
                 }
 
@@ -144,6 +145,21 @@
                 result.textContent = '无法加载验证数据，请稍后再试。';
                 result.style.color = 'yellow';
                 console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+
+        function applyNow() {
+            const result = document.getElementById('result');
+            const currentTime = new Date();
+            const targetTime = new Date('2025-06-21T00:00:00+08:00'); // UTC+8 2025年6月21日0时0分
+
+            if (currentTime >= targetTime) {
+                // 跳转到申请页面，时间没到你还是填不了哈哈哈
+                window.location.href = 'https://docs.qq.com/form/page/DSXB4UGNPR25mUW9v#/fill'; // 替换为实际的申请页面链接
+            } else {
+                // 提示未开放申请
+                result.textContent = '申请尚未开放，请稍后再试。';
+                result.style.color = 'GoldEnrod';
             }
         }
     </script>
