@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>验证NeoMCE InP玩家许可</title>
+    <title>Neo Program | MCE服务器</title>
     <link rel="icon" href="/resources/www_logo.png" type="image/png">
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -52,7 +52,7 @@
 
         .mc-content {
             font-size: 1.1em;
-            margin: 1.5em 0;
+            margin: 1.5em 0 0.2em 0;
             color: #e0e0e0;
             min-height: 0;
         }
@@ -84,6 +84,7 @@
             .mc-container {
                 padding: 1em 0.5em;
                 max-width: 98vw;
+                margin-top: 110px !important;
             }
 
             .mc-title {
@@ -103,12 +104,58 @@
             height: 16px;
             vertical-align: middle;
         }
+
+        .top-logo {
+            position: fixed;
+            top: 18px;
+            left: 32px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-links {
+            position: fixed;
+            top: 18px;
+            right: 32px;
+            z-index: 9999;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+
+        @media (max-width: 500px) {
+            .top-logo {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+                z-index: 9999;
+                background: rgba(34, 40, 49, 0.95);
+                padding: 6px 8px 6px 8px;
+                border-radius: 8px;
+                box-sizing: border-box;
+            }
+
+            .top-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                justify-content: flex-end;
+                padding: 0 10px;
+                background: rgba(34, 40, 49, 0.95);
+                border-radius: 0 0 8px 8px;
+                gap: 0.3em;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- 左上角常驻Logo及文字 -->
-    <div style="position: fixed; top: 18px; left: 32px; z-index: 9999; display: flex; align-items: center;">
+    <!-- 顶部Logo -->
+    <div class="top-logo">
         <img src="/resources/MCE_logoNeo500.png" alt="MCE Logo"
             style="width:36px;height:36px;border-radius:8px;box-shadow:0 2px 8px #0004;">
         <span
@@ -117,7 +164,7 @@
         </span>
     </div>
     <!-- 右上角快捷链接栏 -->
-    <div style="position: fixed; top: 18px; right: 32px; z-index: 9999;">
+    <div class="top-links">
         <a href="https://eula.yimc.top/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm"
             style="margin-left:0.5em;">服务器EULA</a>
         <a href="https://blog.yimc.top/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm"
@@ -165,7 +212,6 @@
                 style="color: inherit; text-decoration: none;">萌ICP备20251234号</a>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const urlParams = new URLSearchParams(window.location.search);
