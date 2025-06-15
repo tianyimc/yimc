@@ -245,8 +245,16 @@
                 const user = validQQs.find(entry => entry.qq === qqInput);
 
                 if (user) {
-                    result.innerHTML = `验证成功！<br>您的游戏名是：${user.username}<br>许可证：${user.licence}`;
-                    result.style.color = 'green';
+                    // 判断正版账户
+                    let isJE = !(user.nonJE === true);
+                    result.innerHTML = `
+                        <span style="color: #6ee07f;">验证成功！</span><br>
+                        游戏名：<b>${user.username}</b><br>
+                        许可证：<b>${user.verifyID}</b><br>
+                        加入时间：<b>${user.jointime}</b><br>
+                        正版账户：<b>${isJE ? '是' : '否'}</b>
+                    `;
+                    result.style.color = 'inherit';
                 } else {
                     result.textContent = '验证失败，您暂未被邀请或申请暂未通过。';
                     result.style.color = 'red';
@@ -269,7 +277,7 @@
                 window.location.href = 'https://docs.qq.com/form/page/DSXB4UGNPR25mUW9v#/fill';
             } else {
                 // 提示未开放申请
-                result.textContent = '申请尚未开放，请稍后再试。';
+                result.textContent = '申请尚未开放，请于2025-6-21 00:00:00后再试。';
                 result.style.color = 'goldenrod';
             }
         }

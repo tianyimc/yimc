@@ -1,6 +1,112 @@
 [
-    { "qq": "3352118375", "username": "qingfong1234", "licence": "7cef35f3-4897-40a8-bc6f-36b47c507685" },
-    { "qq": "1634288249", "username": "tianyimc1234", "licence": "0e7a532c-c03a-49b8-b38f-4e59bd8e1226" },
-    { "qq": "3111420061", "username": "WarSkyGod", "licence": "cc04bad4-f20b-472f-b472-64855c79d333" },
-    { "qq": "1234567890", "username": "OfflineExample(cant login)", "licence": "0000000-0000-0000-00x0-000000000001" }
+  {
+    "qq": "3352118375",
+    "username": "qingfong1234",
+    "jointime": "2025-06-15",
+    "uuid": "c6874295-617f-4862-8cdb-07b28a658309",
+    "verifyID": "09xwudthl5m0mo1g@bsienv"
+  },
+  {
+    "qq": "1634288249",
+    "username": "tianyimc1234",
+    "jointime": "2025-06-15",
+    "uuid": "d73fa34d-b69c-4604-b784-888769f4cd02",
+    "verifyID": "7w7f2ydo037up5pc@bsienv"
+  },
+  {
+    "qq": "3627191347",
+    "username": "UnfiXingRook365",
+    "jointime": "2025-06-15",
+    "nonJE": true,
+    "uuid": "00000000-00004f78-b747-87db2845c59d",
+    "verifyID": "nonranmfnyn809vj60d@bsienv"
+  },
+  {
+    "qq": "2933086520",
+    "username": "Yskru",
+    "jointime": "2025-06-15",
+    "nonJE": true,
+    "uuid": "00000000-000040f7-a3e1-2696486b7acd",
+    "verifyID": "nonyahdnpbltycx2jpy@bsienv"
+  },
+  {
+    "qq": "190392301",
+    "username": "ThreeTable4149",
+    "jointime": "2025-06-15",
+    "uuid": "578f55a2-6e19-45a5-b2ed-6d5fe5834a4a",
+    "verifyID": "4s5e4ctyed5jwlj7@bsienv"
+  },
+  {
+    "qq": "2493365750",
+    "username": "RedSnailMC",
+    "jointime": "2025-06-15",
+    "uuid": "327feb28-79e6-44a5-a06d-294f6148c12f",
+    "verifyID": "710475zfggu46hkq@bsienv"
+  },
+  {
+    "qq": "2432264389",
+    "username": "SloppySteak2845",
+    "jointime": "2025-06-15",
+    "uuid": "ca1fb430-ee0f-465b-a5a5-9a7acda0b82a",
+    "verifyID": "yhe4de0je15uz2m5@bsienv"
+  },
+  {
+    "qq": "2637236284",
+    "username": "HanSiqi2008",
+    "jointime": "2025-06-15",
+    "uuid": "7960532f-b3ba-4ed7-b5b5-55098f9a6ee3",
+    "verifyID": "p3ovyselvqhq804e@bsienv"
+  },
+  {
+    "qq": "3276192042",
+    "username": "XBaiQiuWuZhaoX",
+    "jointime": "2025-06-15",
+    "uuid": "54dcf4c7-01d0-42d2-b2e9-5b788db4e50b",
+    "verifyID": "o3nhcc6rnnqmpc5q@bsienv"
+  },
+  {
+    "qq": "1392927801",
+    "username": "computer1234225",
+    "jointime": "2025-06-15",
+    "nonJE": true,
+    "uuid": "00000000-000048f1-9af6-441fc150b2f1",
+    "verifyID": "nond7u0u2o6kcy5jvas@bsienv"
+  },
+  {
+    "qq": "2144772366",
+    "username": "CongZaiJun",
+    "jointime": "2025-06-15",
+    "uuid": "b1fc4103-1948-4d48-b854-130dc1a8c537",
+    "verifyID": "u2y6g5o57nnt62xt@bsienv"
+  },
+  {
+    "qq": "3111420061",
+    "username": "WarSkyGod",
+    "jointime": "2025-06-15",
+    "uuid": "a9546714-1ab8-48f3-aeb8-e2b1c762781c",
+    "verifyID": "p6k0uy6tclqja9k5@bsienv"
+  },
+  {
+    "qq": "3168422293",
+    "username": "yhkono",
+    "jointime": "2025-06-15",
+    "uuid": "d722af59-7bf5-4a4c-a5ac-838001d45f28",
+    "verifyID": "zr7r5lf5ed438lf3@bsienv"
+  },
+  {
+    "qq": "22799605746",
+    "username": "Killkoiko",
+    "jointime": "2025-06-15",
+    "nonJE": true,
+    "uuid": "00000000-00004e5e-b5be-04de44373cc5",
+    "verifyID": "non6ib73z11y77hsfxh@bsienv"
+  },
+  {
+    "qq": "1565323813",
+    "username": "kanade02109155",
+    "jointime": "2025-06-15",
+    "nonJE": true,
+    "uuid": "00000000-000045f2-b772-ffdcd7c1dd2e",
+    "verifyID": "non3j6kbl6n3mho5v4p@bsienv"
+  }
 ]
