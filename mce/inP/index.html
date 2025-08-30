@@ -184,8 +184,11 @@
         <div class="mc-title">Neo Program</div>
         <div class="mc-content" style="margin-bottom:0; padding-bottom:0;">
             <p><b>内部计划（Project Inner）服务器的玩家许可是邀请制的，您可以在此查看是否收到了邀请</b></p>
-            <p>
+            <!--<p>
                 在下方输入您的QQ号，如果您收到了邀请或主动受邀通过，您将会看到自己的游戏名。
+            </p>-->
+            <p>
+                查询服务暂停，请以实际入服提示为准，但您仍可通过下方渠道申请加入。
             </p>
             <div class="input-group my-3" style="align-items: center;">
                 <input type="text" id="emailInput" class="form-control" placeholder="请输入QQ号"
@@ -223,9 +226,13 @@
         });
 
         async function verifyQQ() {
-            const qqInput = document.getElementById('emailInput').value;
             const result = document.getElementById('result');
+            result.textContent = '查询服务暂停，请以实际入服提示为准，但您仍可通过下方渠道申请加入。';
+            result.style.color = 'red';
 
+            /* 
+            // 以下为原查询逻辑，现已暂停服务，全部注释
+            const qqInput = document.getElementById('emailInput').value;
             // 验证 QQ 号格式（5 到 11 位数字）
             const qqPattern = /^[1-9][0-9]{4,10}$/;
             if (!qqPattern.test(qqInput)) {
@@ -265,6 +272,7 @@
                 result.style.color = 'yellow';
                 console.error('There has been a problem with your fetch operation:', error);
             }
+            */
         }
 
         function applyNow() {
