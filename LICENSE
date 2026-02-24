@@ -1,9 +1,21 @@
-WARNING: 库中仅部分文件允许遵循MIT协议，其他文件（完全不基于上述MIT协议保护的文件）由yimc.top保留所有权利
+YIMC.TOP特殊Licence许可证（special licence of yimc.top）
+著作权所有 (c) 2026 yimc.top
 
+本仓库采用“分范围授权”模式：
+
+一、以下路径内容按 MIT License 授权
+
+1) /fantasyindex.html.bak
+2) /hsBUPT.github.io-main/ 及其所有子目录与文件
+3) /font/ 及其所有子目录与文件
+4) /js/ 及其所有子目录与文件
+5) /css/ 及其所有子目录与文件
+
+除上述明确列出的路径外，其他任何文件或目录均不适用 MIT License，而是根据Special Licence of yimc.top授权。
+
+二、上述路径按 MIT License 授权的 MIT License 全文
 
 MIT License
-
-Copyright (c) 2022 imsyy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,3 +34,23 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+三、其余内容的授权状态
+
+对于未在“第一条”中列明的所有内容，保留所有权利（All Rights Reserved）。
+未经版权所有者事先书面许可，不得复制、修改、分发、再许可或用于商业用途。
+
+四、第三方内容说明
+
+若仓库中包含第三方代码、字体、图片、音频或其他资源，并附有其自身许可证文件或声明，
+则该等第三方内容优先适用其原始许可证；本许可证不改变第三方权利义务。
+
+五、解释优先级
+
+当本文件不同条款之间存在冲突时，以“第一条（MIT 适用路径清单）”确定授权范围。
+
+六、特殊声明
+本仓库所包含的与MCE服务器有关的内容，还可能受到MCE服务器的特定使用条款和条件的约束，使用前请务必查阅相关文档。
+
+七、联系信息
+若您发现本仓库有任何版权或许可证问题，请通过此链接联系版权所有者：https://blog.yimc.top/about/
