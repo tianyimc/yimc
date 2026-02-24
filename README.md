@@ -1,1 +1,1 @@
-yimc.top 保留所有权利
+yimc.top 依据《YIMC.TOP特殊Licence许可证（Special Licence of YIMC.TOP）》保留和开放权利。
