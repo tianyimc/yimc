@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="YIMC 首页导航" />
-    <link rel="icon" href="/resources/www_logo.png" type="image/png" />
-    <title>HOME | YIMC Index</title>
+    <meta name="description" content="认证介绍" />
+    <link rel="icon" type="image/png" href="../resources/www_logo.png" />
+    <title>认证 | TIANYIMC Authentication</title>
     <style>
         :root {
             --bg: #0b1020;
@@ -64,8 +64,6 @@
             display: grid;
             gap: 16px;
             padding: 28px;
-            justify-items: center;
-            text-align: center;
         }
 
         .eyebrow {
@@ -103,6 +101,38 @@
             font-size: 15px;
         }
 
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .link-btn,
+        .ghost-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            transition: transform .16s ease, border-color .16s ease, background .16s ease;
+        }
+
+        .link-btn {
+            background: linear-gradient(180deg, rgba(122, 162, 255, 0.26), rgba(122, 162, 255, 0.12));
+        }
+
+        .ghost-btn {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .link-btn:hover,
+        .ghost-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
         .section {
             margin-top: 24px;
             padding: 24px;
@@ -131,52 +161,52 @@
             font-size: 14px;
         }
 
-        .link-grid {
+        .info-grid {
             display: grid;
             grid-template-columns: repeat(12, minmax(0, 1fr));
             gap: 16px;
         }
 
-        .link-card {
+        .info-card {
             grid-column: span 12;
             border: 1px solid var(--line);
             border-radius: 16px;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
             overflow: hidden;
-            transition: transform .16s ease, border-color .16s ease;
         }
 
-        .link-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.24);
+        .info-card__top {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--line);
         }
 
-        .link-card a {
-            display: block;
-            padding: 18px;
-        }
-
-        .link-card strong {
-            display: block;
+        .info-card__top strong {
             font-size: 18px;
-            margin-bottom: 6px;
         }
 
-        .link-card span {
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.7;
+        .tag {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(122, 162, 255, 0.18);
+            color: #d8e4ff;
+            border: 1px solid rgba(122, 162, 255, 0.24);
+            font-size: 13px;
         }
 
-        .poem-box {
-            margin-top: 18px;
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            background: rgba(0, 0, 0, 0.18);
-            padding: 14px 16px;
+        .info-card__body {
+            padding: 18px;
+            display: grid;
+            gap: 12px;
             color: var(--muted);
             line-height: 1.8;
-            text-align: center;
+        }
+
+        .info-card__body ul {
+            margin: 0;
+            padding-left: 20px;
         }
 
         .footer {
@@ -192,34 +222,13 @@
             text-underline-offset: 2px;
         }
 
-        .footer-icp {
-            text-align: center;
-        }
-
-        .moe-icon {
-            width: 16px;
-            height: 16px;
-            vertical-align: middle;
-        }
-
         @media (min-width: 860px) {
-            .link-card.half {
+            .info-card.half {
                 grid-column: span 6;
             }
 
-            .link-card.third {
-                grid-column: span 4;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .page {
-                padding: 24px 14px 36px;
-            }
-
-            .section-head {
-                flex-direction: column;
-                align-items: flex-start;
+            .info-card.full {
+                grid-column: span 12;
             }
         }
     </style>
@@ -229,76 +238,68 @@
     <main class="page">
         <section class="hero">
             <div class="eyebrow">
-                <img class="eyebrow-logo" src="/resources/www_logo.png" alt="YIMC Logo" />
-                <span>HOME | YIMC Index</span>
+                <img class="eyebrow-logo" src="../resources/www_logo.png" alt="YIMC Logo" />
+                <span>介绍 | TIANYIMC Authentication</span>
             </div>
-            <h1>YIMC 首页</h1>
-            <p>你来到了一片绿洲，这里为你导航。统一入口用于聚合站点服务、内容与文档，帮助你快速前往目标页面。</p>
+            <h1>认证</h1>
+            <p>统一身份认证与权限校验模块介绍页，基于Cloudflare Access与Workers/Pages。</p>
+            <div class="toolbar">
+                <a class="link-btn" href="./publickeys/index.html">查看公钥展示页</a>
+                <a class="ghost-btn" href="../index.html">返回主页</a>
+            </div>
         </section>
 
         <section class="section">
             <div class="section-head">
                 <div>
-                    <h2>快速导航</h2>
-                    <span>主要链接内容区</span>
+                    <h2>说明</h2>
+                    <span>没什么用的介绍页，嘻嘻</span>
                 </div>
-                <span>当前：5 / 5</span>
+                <span>当前：3 / 3</span>
             </div>
 
-            <div class="link-grid">
-                <article class="link-card third">
-                    <a href="/mce/">
-                        <strong>MCE 服务器</strong>
-                        <span>进入 MCE 相关页面与服务介绍。</span>
-                    </a>
+            <div class="info-grid">
+                <article class="info-card full">
+                    <div class="info-card__top">
+                        <strong>模块说明</strong>
+                        <span class="tag">核心安全能力</span>
+                    </div>
+                    <div class="info-card__body">
+                        <div class="hint">服务定位</div>
+                        <div>TIANYIMC Authentication 用于用户登录认证、令牌签发与校验、访问权限判断等核心安全能力，支持业务系统快速接入统一身份体系。</div>
+                    </div>
                 </article>
 
-                <article class="link-card third">
-                    <a href="https://blog.tianyimc.com/" target="_blank" rel="noreferrer noopener">
-                        <strong>YIMC Blog</strong>
-                        <span>访问博客主页，查看公告与文章内容。</span>
-                    </a>
+                <article class="info-card half">
+                    <div class="info-card__top">
+                        <strong>核心能力</strong>
+                        <span class="tag">能力清单</span>
+                    </div>
+                    <div class="info-card__body">
+                        <ul>
+                            <li>用户身份验证（一次性验证码、idP登录方式）</li>
+                            <li>Token 生成、刷新与有效期管理</li>
+                            <li>基于角色与策略的权限控制</li>
+                            <li>认证事件记录与安全审计支持</li>
+                        </ul>
+                    </div>
                 </article>
 
-                <article class="link-card third">
-                    <a href="https://eula.tianyimc.com/" target="_blank" rel="noreferrer noopener">
-                        <strong>MCE EULA</strong>
-                        <span>直达 MCE 服务器 EULA 页面。</span>
-                    </a>
+                <article class="info-card half">
+                    <div class="info-card__top">
+                        <strong>下一步</strong>
+                        <span class="tag">我想要awa</span>
+                    </div>
+                    <div class="info-card__body">
+                        <div>支持FIDO2 Webauthn</div>
+                    </div>
                 </article>
-
-                <article class="link-card half">
-                    <a href="/auth/">
-                        <strong>TIANYIMC Authentication</strong>
-                        <span>查看统一认证模块介绍与公钥展示。</span>
-                    </a>
-                </article>
-
-                <article class="link-card half">
-                    <a href="https://github.com/tianyimc/ZeroSend" target="_blank" rel="noreferrer noopener">
-                        <strong>我的项目 | ZeroSend</strong>
-                        <span>零成本极简、开源、端到端加密的阅后即焚文件分享程序，基于 Cloudflare Workers + KV (+ R2 +ZeroTrust)。</span>
-                    </a>
-                </article>
-            </div>
-
-            <div class="poem-box">
-                <div class="hint">今日诗词</div>
-                <span id="jinrishici-sentence">正在加载今日诗词...</span>
             </div>
         </section>
 
-        <div class="footer">
-            &copy; 2026 tianyimc.com. All rights reserved.
-            <br />
-            <div class="footer-icp">
-                <img src="/resources/moe_icon120.png" class="moe-icon" alt="萌ICP备图标" title="萌ICP备图标" />
-                <a href="https://icp.gov.moe/?keyword=20251234" rel="noreferrer noopener">萌ICP备20251234号</a>
-            </div>
-        </div>
+        <div class="footer">Copyright © 2026 <a href="https://tianyimc.com" target="_blank"
+                rel="noreferrer noopener">tianyimc.com</a> 保留所有权利</div>
     </main>
-
-    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 </body>
 
 </html>

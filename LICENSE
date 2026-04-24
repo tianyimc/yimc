@@ -1,16 +1,10 @@
 tianyimc.com特殊Licence许可证（Special Licence of tianyimc.com）
-著作权所有 (c) 2026 tianyimc.com
+著作权所有 © 2026 tianyimc.com
 
 本仓库采用“分范围授权”模式：
 
 一、以下路径内容按 MIT License 授权
-
-1) /fantasyindex.html.bak
-2) /hsBUPT.github.io-main/ 及其所有子目录与文件
-3) /font/ 及其所有子目录与文件
-4) /js/ 及其所有子目录与文件
-5) /css/ 及其所有子目录与文件
-
+2) /old/ 及其所有子目录与文件
 除上述明确列出的路径外，其他任何文件或目录均不适用 MIT License，而是根据Special Licence of tianyimc.com授权。
 
 二、上述路径按 MIT License 授权的 MIT License 全文

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="公钥展示页" />
+    <link rel="icon" type="image/png" href="../resources/www_logo.png" />
+    <title>公钥展示 | TIANYIMC Authentication</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --panel: rgba(255, 255, 255, 0.08);
+            --text: #e8eefc;
+            --muted: rgba(232, 238, 252, 0.72);
+            --line: rgba(255, 255, 255, 0.14);
+            --accent: #7aa2ff;
+            --accent-2: #88f0c4;
+            --shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top, rgba(122, 162, 255, 0.24), transparent 34%),
+                radial-gradient(circle at right bottom, rgba(136, 240, 196, 0.16), transparent 30%),
+                var(--bg);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 40px 20px 56px;
+        }
+
+        .hero,
+        .section {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+            box-shadow: var(--shadow);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+        }
+
+        .hero {
+            display: grid;
+            gap: 16px;
+            padding: 28px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 8px 12px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .eyebrow-logo {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(28px, 4vw, 44px);
+            line-height: 1.12;
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 860px;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .link-btn,
+        .ghost-btn,
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            transition: transform .16s ease, border-color .16s ease, background .16s ease;
+            cursor: pointer;
+        }
+
+        .link-btn {
+            background: linear-gradient(180deg, rgba(122, 162, 255, 0.26), rgba(122, 162, 255, 0.12));
+        }
+
+        .ghost-btn {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .link-btn:hover,
+        .ghost-btn:hover,
+        .copy-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .section {
+            margin-top: 24px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .section-head span,
+        .hint,
+        .recommend {
+            color: var(--muted);
+        }
+
+        .section-head span {
+            font-size: 14px;
+        }
+
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .key-card {
+            grid-column: span 12;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+            overflow: hidden;
+        }
+
+        .key-card__top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .key-title {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .key-title strong {
+            font-size: 18px;
+        }
+
+        .key-title small {
+            color: var(--muted);
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(122, 162, 255, 0.18);
+            color: #d8e4ff;
+            border: 1px solid rgba(122, 162, 255, 0.24);
+        }
+
+        .tag--soft {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.14);
+        }
+
+        .key-card__body {
+            padding: 18px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .pubkey-box {
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: rgba(0, 0, 0, 0.18);
+            color: #f4f7ff;
+            line-height: 1.7;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 13px;
+            word-break: break-all;
+            white-space: pre-wrap;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .copy-btn {
+            border-color: rgba(136, 240, 196, 0.22);
+            background: rgba(136, 240, 196, 0.12);
+            color: #d7fff0;
+        }
+
+        .download-btn {
+            color: #fff;
+        }
+
+        .footer {
+            margin-top: 24px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        @media (min-width: 860px) {
+            .key-card {
+                grid-column: span 6;
+            }
+
+            .key-card.is-full {
+                grid-column: span 12;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <section class="hero">
+            <div class="eyebrow">
+                <img class="eyebrow-logo" src="../../resources/www_logo.png" alt="YIMC Logo" />
+                <span>公钥展示页 | TIANYIMC Authentication</span>
+            </div>
+            <h1>公钥公开页</h1>
+            <p>这里用于集中展示可公开分发的公钥。</p>
+            <div class="toolbar">
+                <a class="link-btn" id="githubLink" href="https://github.com/tianyimc" target="_blank"
+                    rel="noreferrer noopener">GitHub
+                    主页</a>
+                <a class="link-btn" id="contactLink" href="https://blog.tianyimc.com/about/" target="_blank"
+                    rel="noreferrer noopener">Blog 联系页</a>
+                <a class="ghost-btn" id="homeLink" href="../../index.html" rel="noreferrer noopener">返回主页</a>
+                <a class="ghost-btn" id="AuthLink" href="../index.html" rel="noreferrer noopener">返回认证介绍</a>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-head">
+                <div>
+                    <h2>公钥列表</h2>
+                    <span>支持一键复制与下载 .pub / .txt 文件</span>
+                </div>
+                <span>当前：1 / 1</span>
+            </div>
+            <div id="keyGrid" class="key-grid" aria-live="polite"></div>
+        </section>
+
+        <div class="footer">Copyright © 2026 <a href="https://tianyimc.com" target="_blank"
+                rel="noreferrer noopener">tianyimc.com</a> 保留所有权利</div>
+    </main>
+
+    <script>
+        const publicKeys = [
+            {
+                id: 'key-1',
+                name: '主公钥',
+                type: 'OpenPGP',
+                status: '当前可用',
+                updatedAt: '2026-04-24',
+                fingerprint: 'A280 645D 5478 4505 BFB8  017F 1A3A DD71 1D30 AEA3',
+                tags: ['签名', '仅加密', '认证用户ID'],
+                key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: 用户标识:	tianyimc <tianyi_mc@outlook.com>
+Comment: 有效期自:	2026/4/23 23:44
+Comment: 文件系统:	255 位 EdDSA(绝密密钥可用)
+Comment: 用途:	签名, 仅加密, 认证用户 ID
+Comment: 指纹:	A280 645D 5478 4505 BFB8  017F 1A3A DD71 1D30 AEA3
+
+
+mDMEaeo+XRYJKwYBBAHaRw8BAQdAfU4NQJz1Tp1QAwYiNTb8/dd1ajkYbABsr9LW
+9sYV+Sq0IHRpYW55aW1jIDx0aWFueWlfbWNAb3V0bG9vay5jb20+iK8EExYKAFcW
+IQSigGRdVHhFBb+4AX8aOt1xHTCuowUCaeo+XRsUgAAAAAAEAA5tYW51MiwyLjUr
+MS4xMSwyLDECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQGjrdcR0w
+rqM3uAD+OGG+vrX/q8pHWnolu5qgQGxScJlIS1zxdP/OHlFjSyUBALa2+l0yxTff
+ddAdGtsvZb3Ap5Lv9XvG82mLV58UeI0GuDgEaeo+XRIKKwYBBAGXVQEFAQEHQDsW
+oN7aczOsOq1QG1r8/+MI3wKPGoAOlp+p0m3eFsAqAwEIB4iUBBgWCgA8FiEEooBk
+XVR4RQW/uAF/GjrdcR0wrqMFAmnqPl0bFIAAAAAABAAObWFudTIsMi41KzEuMTEs
+MiwxAhsMAAoJEBo63XEdMK6j+aMBALXXbkxoAHg/1nhwvHTTm273ckxhS+0pdXK1
+cIegGXMVAQCLg+l8bzG3Ki9d/YAz+RFFAnYM1S3XcUxkhR4v5GmCBrg4BGnqPw8S
+CisGAQQBl1UBBQEBB0DiQa/XRMczWHdfznBlCjq+pV3bYfemtZr3ekWgLZj+HQMB
+CAeImgQYFgoAQhYhBKKAZF1UeEUFv7gBfxo63XEdMK6jBQJp6j8PGxSAAAAAAAQA
+Dm1hbnUyLDIuNSsxLjExLDIsMQIbDAUJBaOdcgAKCRAaOt1xHTCuo36WAQCsAQuJ
+jeUFxR6SeH11ES7A0JMH+1FWKv37uBCLarAHZQD/e5x6ZknQao5ug4EwVTkdISZc
+DGT40Bq6mTnIWVvoQgK4MwRp6j8nFgkrBgEEAdpHDwEBB0BCUvI2bqS+zuX2EsEM
+EepQ33QSFZIVIwt9DVI0tOcj5YkBEQQYFgoAQhYhBKKAZF1UeEUFv7gBfxo63XEd
+MK6jBQJp6j8nGxSAAAAAAAQADm1hbnUyLDIuNSsxLjExLDIsMQIbAgUJBaOdWgCB
+CRAaOt1xHTCuo3YgBBkWCgAdFiEEqHJwsgOhvSxtF9bUAa/bl6RppfgFAmnqPycA
+CgkQAa/bl6Rppfik9gEA5DOvZA4fx+2JcayVsy/jD9rN7Krv0JfGDjQ6K3TolnoB
+AJLE/kEI5vuyREKRyPcCJ0MnrjKqtUVB4yOs/fisps8NnuoBANe07Rt/J+d2rXQY
+cR1w3U63DvGlSCniNZRagvh8BnCIAP4nWRoNvr1rCmTVBw5016W1/sJT3I6ajltX
+zK9x1Nx5Cw==
+=FSKa
+-----END PGP PUBLIC KEY BLOCK-----
+`
+            }
+        ];
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function sanitizeFileName(value) {
+            return String(value).trim().replace(/[\\/:*?"<>|]+/g, '-').replace(/\s+/g, '_');
+        }
+
+        async function copyText(text, button) {
+            try {
+                await navigator.clipboard.writeText(text);
+            } catch {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            const original = button.textContent;
+            button.textContent = '已复制';
+            setTimeout(() => { button.textContent = original; }, 1400);
+        }
+
+        function downloadPubFile(item) {
+            const blob = new Blob([`${item.key}\n`], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${sanitizeFileName(item.name || item.id)}.pub`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadTxtFile(item) {
+            const blob = new Blob([`${item.key}\n`], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${sanitizeFileName(item.name || item.id)}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function renderKeys() {
+            const grid = document.getElementById('keyGrid');
+            grid.innerHTML = publicKeys.map((item) => `
+				<article class="key-card ${publicKeys.length === 1 ? 'is-full' : ''}">
+					<div class="key-card__top">
+						<div class="key-title">
+							<strong>${escapeHtml(item.name)}</strong>
+							<small>${escapeHtml(item.type)}</small>
+						</div>
+						<div class="meta">
+							<span class="tag">${escapeHtml(item.status)}</span>
+							<span>更新时间：${escapeHtml(item.updatedAt)}</span>
+						</div>
+					</div>
+					<div class="key-card__body">
+						<div class="hint">指纹：${escapeHtml(item.fingerprint)}</div>
+						<div class="tags" aria-label="标签">
+							${(item.tags || []).map((tag) => `<span class="tag tag--soft">#${escapeHtml(tag)}</span>`).join('')}
+						</div>
+						<div class="pubkey-box" id="pubkey-${escapeHtml(item.id)}">${escapeHtml(item.key)}</div>
+						<div class="actions">
+							<button class="copy-btn" type="button" data-copy="${escapeHtml(item.id)}">一键复制公钥</button>
+                            <button class="ghost-btn download-btn" type="button" data-download="${escapeHtml(item.id)}">下载 .pub 文件</button>
+                            <button class="ghost-btn download-btn" type="button" data-download-txt="${escapeHtml(item.id)}">下载 .txt 文件</button>
+						</div>
+					</div>
+				</article>
+			`).join('');
+
+            grid.querySelectorAll('[data-copy]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-copy');
+                    const text = document.getElementById(`pubkey-${id}`).textContent;
+                    copyText(text, button);
+                });
+            });
+
+            grid.querySelectorAll('[data-download]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-download');
+                    const item = publicKeys.find((entry) => entry.id === id);
+                    if (item) downloadPubFile(item);
+                });
+            });
+
+            grid.querySelectorAll('[data-download-txt]').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-download-txt');
+                    const item = publicKeys.find((entry) => entry.id === id);
+                    if (item) downloadTxtFile(item);
+                });
+            });
+        }
+
+        renderKeys();
+    </script>
+</body>
+
+</html>
