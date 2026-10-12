@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="SAVIOR 的十八岁生日祝福 —— 十八岁的门已经打开，世界正等待你以自己的名字抵达。" />
+    <meta name="theme-color" content="#090B1A" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="author" content="tianyimc.com" />
+    <meta property="og:title" content="SAVIOR · 18 — Welcome to Adulthood" />
+    <meta property="og:description" content="愿你永远自由，永远热烈，永远拥有选择人生的勇气。18 岁生日快乐。" />
+    <meta property="og:type" content="website" />
+    <title>SAVIOR · 18 — Happy 18th Birthday</title>
+    <link rel="icon" href="../resources/www_logo.png" type="image/png" />
+
+    <style>
+        /* ============================================================
+           SAVIOR · 18  ——  星际成年礼邀请函
+           单文件页面：样式与脚本全部内置，无任何外部 CDN 依赖。
+           需要修改的地方都用「可编辑」注释标出。
+           ============================================================ */
+
+        :root {
+            /* —— 色彩令牌 —— */
+            --ink-blue: #090B1A;
+            /* 墨蓝：页面底色 */
+            --purple-deep: #1A1034;
+            /* 深紫 */
+            --gold: #F4D58D;
+            /* 香槟金：主视觉高光 */
+            --gold-soft: rgba(244, 213, 141, .45);
+            --violet: #8B5CF6;
+            /* 紫罗兰 */
+            --rose: #F9A8D4;
+            /* 玫瑰粉 */
+            --warm-white: #FFF9F0;
+            /* 正文暖白 */
+            --muted: #B8AEC9;
+            /* 次级文字：灰紫 */
+
+            /* —— 玻璃质感 —— */
+            --glass: rgba(26, 16, 52, .42);
+            --glass-line: rgba(244, 213, 141, .18);
+            --glass-line-strong: rgba(244, 213, 141, .48);
+            --radius: 22px;
+            --radius-lg: 30px;
+            --shadow: 0 30px 80px rgba(0, 0, 0, .5);
+
+            /* —— 字体：全部使用系统字体，无需下载 —— */
+            --font-display: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+            --font-num: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+            --font-hand: "Segoe Script", "Bradley Hand", "Snell Roundhand", cursive;
+
+            --maxw: 1120px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100%;
+            color: var(--warm-white);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.85;
+            background-color: var(--ink-blue);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body.lb-open {
+            overflow: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        figure,
+        blockquote {
+            margin: 0;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            font: inherit;
+            color: inherit;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translate(-50%, -160%);
+            z-index: 120;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: var(--gold);
+            color: #1A1034;
+            font-size: .9rem;
+            transition: transform .25s ease;
+        }
+
+        .skip-link:focus {
+            transform: translate(-50%, 0);
+            text-decoration: none;
+        }
+
+        /* ================= 顶栏 ================= */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 10px clamp(14px, 3vw, 30px);
+            background: linear-gradient(180deg, rgba(9, 11, 26, .78), rgba(9, 11, 26, .28) 70%, transparent);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(244, 213, 141, .10);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .82rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .brand-mark {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid var(--glass-line);
+        }
+
+        .brand b {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .sound-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--glass-line);
+            background: rgba(26, 16, 52, .45);
+            color: var(--muted);
+            font-size: .82rem;
+            letter-spacing: .08em;
+            cursor: pointer;
+            transition: border-color .3s ease, color .3s ease, box-shadow .3s ease, transform .3s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .sound-btn:hover {
+            color: var(--warm-white);
+            border-color: var(--glass-line-strong);
+            transform: translateY(-1px);
+        }
+
+        .sound-btn:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        .sound-btn.is-on {
+            color: var(--gold);
+            border-color: var(--glass-line-strong);
+            box-shadow: 0 0 22px rgba(244, 213, 141, .22);
+        }
+
+        .sound-icon {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .sound-bars {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 13px;
+        }
+
+        .sound-bars i {
+            display: block;
+            width: 2px;
+            height: 4px;
+            border-radius: 2px;
+            background: currentColor;
+            opacity: .35;
+        }
+
+        .sound-btn.is-on .sound-bars i {
+            opacity: 1;
+            animation: bar 1.15s ease-in-out infinite;
+        }
+
+        .sound-btn.is-on .sound-bars i:nth-child(2) {
+            animation-delay: .18s;
+        }
+
+        .sound-btn.is-on .sound-bars i:nth-child(3) {
+            animation-delay: .36s;
+        }
+
+        @keyframes bar {
+
+            0%,
+            100% {
+                height: 4px;
+            }
+
+            50% {
+                height: 13px;
+            }
+        }
+
+        /* ================= 首屏 ================= */
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: clamp(84px, 12vh, 120px) clamp(18px, 5vw, 40px) clamp(72px, 11vh, 104px);
+            background:
+                radial-gradient(120% 90% at 50% 110%, rgba(139, 92, 246, .22), transparent 62%),
+                linear-gradient(180deg, #070814 0%, var(--ink-blue) 34%, #0D0A22 72%, #120C2A 100%);
+        }
+
+        .starfield {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -12%;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(42% 38% at 20% 26%, rgba(139, 92, 246, .30), transparent 70%),
+                radial-gradient(38% 34% at 80% 28%, rgba(249, 168, 212, .14), transparent 72%),
+                radial-gradient(56% 46% at 50% 92%, rgba(244, 213, 141, .12), transparent 70%);
+            filter: blur(8px);
+            animation: drift 28s ease-in-out infinite alternate;
+        }
+
+        .orb {
+            position: absolute;
+            z-index: 1;
+            border-radius: 50%;
+            filter: blur(26px);
+            opacity: .55;
+            pointer-events: none;
+            animation: float 22s ease-in-out infinite alternate;
+        }
+
+        .orb-a {
+            width: 240px;
+            height: 240px;
+            top: 16%;
+            left: 10%;
+            background: radial-gradient(circle at 35% 35%, rgba(139, 92, 246, .55), transparent 68%);
+        }
+
+        .orb-b {
+            width: 300px;
+            height: 300px;
+            bottom: 12%;
+            right: 6%;
+            background: radial-gradient(circle at 60% 40%, rgba(249, 168, 212, .32), transparent 68%);
+            animation-duration: 30s;
+            animation-delay: -6s;
+        }
+
+        .orb-c {
+            width: 200px;
+            height: 200px;
+            top: 46%;
+            right: 22%;
+            background: radial-gradient(circle at 50% 50%, rgba(244, 213, 141, .30), transparent 68%);
+            animation-duration: 26s;
+            animation-delay: -12s;
+        }
+
+        @keyframes drift {
+            from {
+                transform: translate3d(-2%, 1%, 0) scale(1);
+            }
+
+            to {
+                transform: translate3d(2%, -2%, 0) scale(1.06);
+            }
+        }
+
+        @keyframes float {
+            from {
+                transform: translate3d(0, -14px, 0) scale(.96);
+            }
+
+            to {
+                transform: translate3d(18px, 22px, 0) scale(1.08);
+            }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: var(--maxw);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(.66rem, 1.6vw, .78rem);
+            letter-spacing: .42em;
+            text-transform: uppercase;
+            color: var(--muted);
+            animation: fadeUp 1.1s cubic-bezier(.22, .8, .2, 1) .1s both;
+        }
+
+        .eyebrow::before,
+        .eyebrow::after {
+            content: "";
+            width: clamp(20px, 8vw, 64px);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-soft));
+        }
+
+        .eyebrow::after {
+            background: linear-gradient(90deg, var(--gold-soft), transparent);
+        }
+
+        .big-wrap {
+            position: relative;
+            display: grid;
+            place-items: center;
+            margin: clamp(6px, 1.6vh, 18px) 0 clamp(10px, 2vh, 22px);
+            animation: zoomIn 1.5s cubic-bezier(.18, .86, .2, 1) .25s both;
+        }
+
+        /* 巨型半透明 18：金色描边 + 柔和发光 */
+        .eighteen {
+            font-family: var(--font-num);
+            font-weight: 800;
+            font-size: clamp(8.5rem, 33vw, 24rem);
+            line-height: .8;
+            letter-spacing: .01em;
+            color: rgba(244, 213, 141, .16);
+            -webkit-text-stroke: 1.6px rgba(244, 213, 141, .72);
+            text-shadow: 0 0 46px rgba(244, 213, 141, .26), 0 0 120px rgba(139, 92, 246, .30);
+            user-select: none;
+        }
+
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            .eighteen {
+                background-image: linear-gradient(180deg, rgba(255, 249, 240, .30) 0%, rgba(244, 213, 141, .18) 46%, rgba(139, 92, 246, .22) 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+        }
+
+        /* SAVIOR 横跨数字中央 */
+        .savior-name {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            pointer-events: none;
+        }
+
+        .savior-name span {
+            font-family: var(--font-display);
+            font-size: clamp(1.7rem, 6.4vw, 4.2rem);
+            letter-spacing: .3em;
+            text-indent: .3em;
+            font-weight: 600;
+            color: var(--gold);
+            filter: drop-shadow(0 4px 26px rgba(244, 213, 141, .35));
+            animation: blurIn 1.5s cubic-bezier(.22, .8, .2, 1) 1.1s both;
+        }
+
+        /* 支持渐变文字时再启用裁切填充，不支持则保持上面的金色描边文字 */
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            .savior-name span {
+                background-image: linear-gradient(100deg, #FFF9F0 6%, #F4D58D 42%, #FFF9F0 78%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(.84);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes blurIn {
+            from {
+                opacity: 0;
+                filter: blur(16px);
+                letter-spacing: .62em;
+            }
+
+            to {
+                opacity: 1;
+                filter: blur(0);
+                letter-spacing: .3em;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .hero-sub {
+            font-family: var(--font-display);
+            font-size: clamp(1.15rem, 3.4vw, 1.9rem);
+            letter-spacing: .12em;
+            color: var(--warm-white);
+            animation: fadeUp 1.1s cubic-bezier(.22, .8, .2, 1) 1.5s both;
+        }
+
+        .hero-sub .dot {
+            color: var(--gold);
+            margin: 0 .5em;
+        }
+
+        .hero-bless {
+            max-width: 34em;
+            margin: clamp(16px, 3vh, 28px) auto 0;
+            color: var(--muted);
+            font-size: clamp(.92rem, 2.6vw, 1.06rem);
+            line-height: 2;
+            animation: fadeUp 1.1s cubic-bezier(.22, .8, .2, 1) 1.75s both;
+        }
+
+        .hero-bless strong {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            left: 50%;
+            bottom: clamp(16px, 4vh, 34px);
+            z-index: 3;
+            transform: translateX(-50%);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: .68rem;
+            letter-spacing: .34em;
+            text-transform: uppercase;
+            color: var(--muted);
+            animation: fadeUp 1.1s ease 2.1s both;
+        }
+
+        .scroll-cue:hover {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .scroll-cue svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: bob 2.4s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+
+            0%,
+            100% {
+                transform: translateY(-2px);
+                opacity: .6;
+            }
+
+            50% {
+                transform: translateY(6px);
+                opacity: 1;
+            }
+        }
+
+        /* ================= 通用区块 ================= */
+        .section {
+            position: relative;
+            padding: clamp(78px, 13vh, 148px) clamp(20px, 5vw, 40px);
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: var(--maxw);
+            margin: 0 auto;
+        }
+
+        .kicker {
+            display: inline-block;
+            font-size: clamp(.66rem, 1.6vw, .76rem);
+            letter-spacing: .4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+
+        .section h2 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: clamp(1.6rem, 5vw, 2.9rem);
+            line-height: 1.3;
+            letter-spacing: .04em;
+            color: var(--warm-white);
+        }
+
+        .section h2 .cn {
+            display: block;
+            margin-top: 12px;
+            font-family: var(--font-sans);
+            font-size: clamp(.98rem, 2.9vw, 1.22rem);
+            font-weight: 400;
+            letter-spacing: .02em;
+            color: var(--muted);
+        }
+
+        .rule {
+            width: 74px;
+            height: 1px;
+            margin: 26px 0;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        /* 滚动淡入 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity .95s cubic-bezier(.22, .8, .2, 1), transform .95s cubic-bezier(.22, .8, .2, 1);
+            transition-delay: var(--d, 0s);
+        }
+
+        .reveal.is-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ================= 2. 成年宣言 ================= */
+        .manifesto {
+            background: linear-gradient(180deg, #120C2A 0%, #170E33 38%, #1E1140 78%, #20123F 100%);
+        }
+
+        .manifesto .wrap {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr);
+            gap: clamp(30px, 6vw, 72px);
+            align-items: center;
+        }
+
+        .letter-body {
+            position: relative;
+            margin-top: clamp(18px, 3vh, 30px);
+            padding-left: clamp(18px, 3vw, 30px);
+            border-left: 1px solid rgba(244, 213, 141, .38);
+            color: rgba(255, 249, 240, .88);
+            font-size: clamp(.95rem, 2.6vw, 1.08rem);
+            line-height: 2.15;
+        }
+
+        .letter-body p+p {
+            margin-top: 14px;
+        }
+
+        .timeline {
+            grid-column: 1 / -1;
+            margin-top: clamp(34px, 6vh, 62px);
+            font-family: var(--font-num);
+            font-weight: 700;
+            font-size: clamp(1rem, 4.4vw, 3rem);
+            letter-spacing: .04em;
+            line-height: 1.1;
+            color: rgba(244, 213, 141, .18);
+            white-space: nowrap;
+        }
+
+        .timeline small {
+            display: block;
+            margin-top: 10px;
+            font-family: var(--font-sans);
+            font-size: clamp(.72rem, 2.2vw, .84rem);
+            font-weight: 400;
+            letter-spacing: .3em;
+            color: rgba(184, 174, 201, .68);
+            white-space: normal;
+        }
+
+        /* 漂浮星球（纯 CSS，无真人图片） */
+        .planet-stage {
+            position: relative;
+            display: grid;
+            place-items: center;
+            min-height: clamp(240px, 34vw, 340px);
+        }
+
+        .planet {
+            position: relative;
+            width: clamp(130px, 22vw, 190px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 32% 28%, rgba(255, 249, 240, .55), rgba(244, 213, 141, .30) 34%, rgba(139, 92, 246, .34) 66%, rgba(26, 16, 52, .9) 100%);
+            box-shadow: inset -14px -18px 42px rgba(9, 11, 26, .85), 0 0 62px rgba(244, 213, 141, .26);
+            animation: hover 9s ease-in-out infinite alternate;
+        }
+
+        .planet::after {
+            content: "";
+            position: absolute;
+            inset: -26%;
+            border-radius: 50%;
+            border: 1px solid rgba(244, 213, 141, .28);
+            transform: rotate(-24deg) scaleY(.42);
+        }
+
+        .orbit {
+            position: absolute;
+            width: clamp(200px, 34vw, 300px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid rgba(139, 92, 246, .34);
+            transform: rotate(24deg) scaleY(.4);
+        }
+
+        .orbit i {
+            position: absolute;
+            top: 50%;
+            left: -3px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 14px var(--gold);
+        }
+
+        .orbit-b {
+            width: clamp(250px, 44vw, 390px);
+            transform: rotate(-16deg) scaleY(.34);
+            border-color: rgba(249, 168, 212, .28);
+        }
+
+        .orbit-b i {
+            left: auto;
+            right: -3px;
+            background: var(--rose);
+            box-shadow: 0 0 14px var(--rose);
+        }
+
+        @keyframes hover {
+            from {
+                transform: translateY(-10px);
+            }
+
+            to {
+                transform: translateY(12px);
+            }
+        }
+
+        /* ================= 3. 四颗星 ================= */
+        .stars-section {
+            background: linear-gradient(180deg, #20123F 0%, var(--purple-deep) 44%, #2A1244 100%);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(14px, 2vw, 22px);
+            margin-top: clamp(34px, 6vh, 54px);
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+            padding: clamp(24px, 3vw, 30px) clamp(20px, 2.4vw, 26px) clamp(26px, 3vw, 32px);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-line);
+            background: var(--glass);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: var(--shadow);
+            transition: transform .45s cubic-bezier(.22, .8, .2, 1), border-color .45s ease, box-shadow .45s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 220px;
+            height: 220px;
+            top: -96px;
+            right: -86px;
+            border-radius: 50%;
+            background: var(--halo, radial-gradient(circle, rgba(244, 213, 141, .34), transparent 68%));
+            filter: blur(14px);
+            opacity: .75;
+            transition: opacity .45s ease;
+        }
+
+        .card:hover,
+        .card:focus-within {
+            transform: translateY(-8px);
+            border-color: var(--glass-line-strong);
+            box-shadow: 0 34px 90px rgba(0, 0, 0, .55), 0 0 40px rgba(244, 213, 141, .16);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1.3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            margin-bottom: 20px;
+        }
+
+        .card-no {
+            font-family: var(--font-num);
+            font-size: .74rem;
+            letter-spacing: .34em;
+            color: var(--muted);
+        }
+
+        .card h3 {
+            margin: 8px 0 14px;
+            font-family: var(--font-display);
+            font-size: clamp(1.16rem, 2.6vw, 1.4rem);
+            font-weight: 600;
+            letter-spacing: .06em;
+        }
+
+        .card h3 em {
+            display: block;
+            margin-top: 6px;
+            font-family: var(--font-sans);
+            font-style: normal;
+            font-size: .72rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .card p {
+            color: rgba(255, 249, 240, .84);
+            font-size: .95rem;
+            line-height: 2;
+        }
+
+        /* ================= 4. 十八岁的生日头像 ================= */
+        .archive {
+            background: linear-gradient(180deg, #2A1244 0%, #331545 42%, #3E1B46 100%);
+        }
+
+        .archive-head {
+            max-width: 46em;
+        }
+
+        /* 头像展示台：圆形金环 + 柔和发光（图片缺失时自动退化为占位，绝不出现破图图标） */
+        .portrait-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(18px, 3vh, 30px);
+            margin-top: clamp(34px, 6vh, 56px);
+        }
+
+        .frame {
+            position: relative;
+            margin: 0;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 1px solid rgba(244, 213, 141, .5);
+            background: linear-gradient(150deg, rgba(139, 92, 246, .22), rgba(26, 16, 52, .72) 58%, rgba(244, 213, 141, .12));
+            box-shadow: 0 0 0 10px rgba(244, 213, 141, .05), 0 0 70px rgba(244, 213, 141, .28), var(--shadow);
+        }
+
+        .portrait-frame {
+            width: clamp(210px, 48vw, 330px);
+            aspect-ratio: 1;
+        }
+
+        .frame img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.03);
+            transition: opacity .7s ease, transform .9s cubic-bezier(.22, .8, .2, 1);
+            /* 径向蒙版：把浅色底的头像柔和融进深紫夜空 */
+            -webkit-mask-image: radial-gradient(circle closest-side at 50% 46%, #000 62%, rgba(0, 0, 0, .5) 86%, transparent 100%);
+            mask-image: radial-gradient(circle closest-side at 50% 46%, #000 62%, rgba(0, 0, 0, .5) 86%, transparent 100%);
+        }
+
+        .frame.is-loaded img {
+            opacity: 1;
+            transform: none;
+        }
+
+        .frame.is-loaded {
+            cursor: zoom-in;
+        }
+
+        .frame.is-loaded:hover img {
+            transform: scale(1.04);
+        }
+
+        .frame.is-loaded:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 5px;
+        }
+
+        /* 边缘压暗，让浅色插画与夜空过渡自然 */
+        .frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 42%, rgba(139, 92, 246, 0) 40%, rgba(26, 16, 52, .36) 78%, rgba(9, 11, 26, .8) 100%);
+            mix-blend-mode: multiply;
+        }
+
+        /* 未上传图片时的占位（绝不显示破图图标） */
+        .ph {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px;
+            text-align: center;
+            transition: opacity .5s ease, visibility .5s ease;
+        }
+
+        .frame.is-loaded .ph {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .ph-ring {
+            position: absolute;
+            inset: 12px;
+            border: 1px dashed rgba(244, 213, 141, .34);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .ph svg {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: rgba(244, 213, 141, .78);
+            stroke-width: 1.3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .ph-label {
+            font-family: var(--font-num);
+            font-size: clamp(.6rem, 1.7vw, .72rem);
+            letter-spacing: .26em;
+            color: rgba(255, 249, 240, .74);
+        }
+
+        .ph-file {
+            font-size: clamp(.6rem, 1.6vw, .68rem);
+            letter-spacing: .12em;
+            color: rgba(184, 174, 201, .72);
+        }
+
+        /* 头像下方的一句话说明 */
+        .portrait-cap {
+            max-width: 34em;
+            text-align: center;
+            color: var(--muted);
+            font-size: clamp(.78rem, 2.2vw, .9rem);
+            letter-spacing: .14em;
+        }
+
+        .portrait-cap strong {
+            display: block;
+            margin-bottom: 10px;
+            font-family: var(--font-display);
+            font-size: clamp(1.05rem, 3vw, 1.45rem);
+            font-weight: 600;
+            letter-spacing: .1em;
+            color: var(--warm-white);
+        }
+
+        .portrait-cap code {
+            padding: 2px 7px;
+            border-radius: 6px;
+            background: rgba(244, 213, 141, .14);
+            color: var(--gold);
+            font-size: .88em;
+            letter-spacing: .04em;
+        }
+
+        /* ================= 5. 祝福信 ================= */
+        .letter-section {
+            background: linear-gradient(180deg, #3E1B46 0%, #4C2344 38%, #67352F 76%, #7A4A2C 100%);
+        }
+
+        .letter-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(80% 60% at 50% 100%, rgba(255, 197, 122, .30), transparent 68%);
+        }
+
+        .letter-paper {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(30px, 5.4vw, 62px) clamp(24px, 5vw, 64px) clamp(30px, 5vw, 54px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(244, 213, 141, .26);
+            background: linear-gradient(160deg, rgba(255, 249, 240, .12), rgba(244, 213, 141, .05) 46%, rgba(26, 16, 52, .34));
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: var(--shadow);
+        }
+
+        .letter-paper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: clamp(22px, 4vw, 44px);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, rgba(244, 213, 141, .34) 18%, rgba(244, 213, 141, .34) 82%, transparent);
+        }
+
+        .letter-content {
+            position: relative;
+            z-index: 2;
+            padding-left: clamp(10px, 3vw, 34px);
+            max-width: 44em;
+        }
+
+        .letter-content p {
+            color: rgba(255, 249, 240, .9);
+            font-size: clamp(.95rem, 2.6vw, 1.08rem);
+            line-height: 2.2;
+        }
+
+        .letter-content p+p {
+            margin-top: 16px;
+        }
+
+        .letter-salutation {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            letter-spacing: .08em;
+            color: var(--gold);
+        }
+
+        .letter-sign {
+            margin-top: clamp(26px, 4vh, 40px);
+            text-align: right;
+        }
+
+        .letter-sign .with-love {
+            display: block;
+            font-family: var(--font-hand);
+            font-size: clamp(1.3rem, 3.6vw, 1.8rem);
+            color: var(--gold);
+            transform: rotate(-3deg);
+        }
+
+        .letter-sign .from {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: clamp(.8rem, 2.2vw, .9rem);
+            letter-spacing: .18em;
+            color: var(--muted);
+        }
+
+        /* 可编辑：把下面的下划线留白改成送祝福的人的名字 */
+        .letter-sign .from .blank {
+            display: inline-block;
+            min-width: clamp(120px, 24vw, 220px);
+            border-bottom: 1px dashed rgba(244, 213, 141, .5);
+            color: var(--warm-white);
+            text-align: center;
+            letter-spacing: .1em;
+        }
+
+        /* ================= 6. 结尾 ================= */
+        .finale {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: clamp(96px, 17vh, 190px) clamp(20px, 5vw, 40px) clamp(80px, 14vh, 150px);
+            background:
+                radial-gradient(70% 54% at 50% 108%, rgba(255, 197, 122, .38), transparent 66%),
+                linear-gradient(180deg, #7A4A2C 0%, #4A2438 26%, #1E1140 62%, #0B0A1C 100%);
+        }
+
+        .road {
+            position: absolute;
+            left: 50%;
+            bottom: -4%;
+            width: min(920px, 118vw);
+            height: 46%;
+            transform: translateX(-50%) perspective(520px) rotateX(68deg);
+            transform-origin: 50% 100%;
+            background: linear-gradient(180deg, rgba(255, 249, 240, .34), rgba(244, 213, 141, .12) 42%, transparent 78%);
+            filter: blur(3px);
+            mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
+            -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 88%);
+            pointer-events: none;
+        }
+
+        .track {
+            position: relative;
+            z-index: 2;
+            width: min(760px, 84%);
+            height: 2px;
+            margin: 0 auto clamp(28px, 5vh, 44px);
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, var(--gold) 22%, #FFF9F0 50%, var(--gold) 78%, transparent);
+            box-shadow: 0 0 26px rgba(244, 213, 141, .7), 0 0 70px rgba(244, 213, 141, .34);
+        }
+
+        .finale h2 {
+            position: relative;
+            z-index: 2;
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 6vw, 3rem);
+            font-weight: 600;
+            letter-spacing: .1em;
+            line-height: 1.4;
+        }
+
+        .finale h2 .shine {
+            display: block;
+            margin-top: 6px;
+            color: var(--gold);
+        }
+
+        @supports (background-clip: text) or (-webkit-background-clip: text) {
+            .finale h2 .shine {
+                background-image: linear-gradient(96deg, #FFF9F0, var(--gold) 46%, #FFF9F0);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+        }
+
+        .finale .final-cn {
+            position: relative;
+            z-index: 2;
+            max-width: 32em;
+            margin: clamp(22px, 4vh, 34px) auto 0;
+            color: rgba(255, 249, 240, .88);
+            font-size: clamp(.95rem, 2.6vw, 1.1rem);
+            line-height: 2.1;
+        }
+
+        .made-with {
+            position: relative;
+            z-index: 2;
+            margin-top: clamp(34px, 6vh, 54px);
+            font-size: clamp(.68rem, 1.9vw, .78rem);
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: rgba(184, 174, 201, .78);
+        }
+
+        /* ================= 页脚 ================= */
+        .footer {
+            padding: clamp(30px, 5vh, 46px) clamp(20px, 5vw, 40px) clamp(34px, 5vh, 50px);
+            text-align: center;
+            background: #08070F;
+            border-top: 1px solid rgba(244, 213, 141, .10);
+        }
+
+        .footer .rule {
+            margin: 0 auto 22px;
+        }
+
+        .copyright {
+            font-size: .8rem;
+            color: var(--muted);
+            letter-spacing: .04em;
+        }
+
+        .footer-icp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            font-size: .78rem;
+            color: var(--muted);
+        }
+
+        .moe-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        /* ================= 回到顶部 ================= */
+        .to-top {
+            position: fixed;
+            right: clamp(14px, 3vw, 26px);
+            bottom: clamp(16px, 3vh, 28px);
+            z-index: 70;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 1px solid var(--glass-line);
+            background: rgba(26, 16, 52, .62);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--gold);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity .4s ease, transform .4s ease, visibility .4s, border-color .3s ease, box-shadow .3s ease;
+        }
+
+        .to-top.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+        }
+
+        .to-top:hover {
+            border-color: var(--glass-line-strong);
+            box-shadow: 0 0 26px rgba(244, 213, 141, .26);
+        }
+
+        .to-top:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        .to-top svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ================= 大图预览层 ================= */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            padding: clamp(16px, 4vw, 48px);
+            background: rgba(5, 4, 14, .88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            animation: fadeIn .35s ease both;
+        }
+
+        .lightbox[hidden] {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .lightbox-figure {
+            position: relative;
+            max-width: min(1080px, 94vw);
+            max-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            animation: zoomIn .45s cubic-bezier(.22, .8, .2, 1) both;
+        }
+
+        .lightbox-figure img {
+            max-width: 100%;
+            max-height: 76vh;
+            border-radius: 18px;
+            border: 1px solid rgba(244, 213, 141, .26);
+            box-shadow: 0 40px 120px rgba(0, 0, 0, .7);
+            object-fit: contain;
+        }
+
+        .lightbox-cap {
+            font-size: clamp(.84rem, 2.2vw, .96rem);
+            letter-spacing: .1em;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -14px;
+            right: -6px;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 1px solid var(--glass-line);
+            background: rgba(26, 16, 52, .86);
+            color: var(--warm-white);
+            cursor: pointer;
+            transition: border-color .3s ease, box-shadow .3s ease;
+        }
+
+        .lightbox-close:hover {
+            border-color: var(--glass-line-strong);
+            box-shadow: 0 0 24px rgba(244, 213, 141, .3);
+        }
+
+        .lightbox-close:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        .lightbox-close svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+        }
+
+        /* ================= 响应式 ================= */
+        @media (max-width: 1024px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .manifesto .wrap {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .planet-stage {
+                order: -1;
+                min-height: clamp(200px, 46vw, 280px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .brand span.full {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                line-height: 1.8;
+            }
+
+            .cards {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .eyebrow {
+                letter-spacing: .3em;
+            }
+
+            .letter-sign {
+                text-align: left;
+            }
+
+            .lightbox-close {
+                top: -6px;
+                right: 0;
+            }
+        }
+
+        /* ================= 尊重系统「减少动态效果」 ================= */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+
+            .scroll-cue svg {
+                animation: none !important;
+            }
+
+            .hero::before,
+            .orb,
+            .planet,
+            .frame img {
+                animation: none !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#manifesto">跳到正文</a>
+
+    <header class="topbar">
+        <span class="brand">
+            <img class="brand-mark" src="../resources/www_logo.png" alt="YIMC Logo" />
+            <span>YIMC · <b>SAVIOR&nbsp;18</b><span class="full">&nbsp;· Welcome to Adulthood</span></span>
+        </span>
+        <button class="sound-btn" id="sound-toggle" type="button" aria-pressed="false" aria-label="播放背景音乐"
+            title="播放背景音乐">
+            <svg class="sound-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 9.5v5h3.2L12 19V5L7.2 9.5H4Z" />
+                <path d="M15.4 8.6a5 5 0 0 1 0 6.8" />
+                <path d="M18.2 5.9a9 9 0 0 1 0 12.2" />
+            </svg>
+            <span class="sound-label">音乐</span>
+            <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+    </header>
+
+    <main id="top">
+        <!-- ============ 1. 首屏：18 岁的星际入场券 ============ -->
+        <section class="hero" id="hero">
+            <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+            <span class="orb orb-a" aria-hidden="true"></span>
+            <span class="orb orb-b" aria-hidden="true"></span>
+            <span class="orb orb-c" aria-hidden="true"></span>
+
+            <div class="hero-inner">
+                <h1 class="sr-only">SAVIOR · 18 · Happy 18th Birthday</h1>
+
+                <span class="eyebrow" aria-hidden="true">The Eighteenth Chapter</span>
+
+                <span class="big-wrap" aria-hidden="true">
+                    <span class="eighteen">18</span>
+                    <span class="savior-name"><span>SAVIOR</span></span>
+                </span>
+
+                <span class="hero-sub" aria-hidden="true">Happy<span class="dot">·</span>18th<span
+                        class="dot">·</span>Birthday</span>
+
+                <p class="hero-bless">十八岁的门已经打开，<strong>世界正等待你以自己的名字抵达。</strong></p>
+            </div>
+
+            <a class="scroll-cue" href="#manifesto">
+                <span>Scroll to begin</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 4v14" />
+                    <path d="M6 13l6 7 6-7" />
+                </svg>
+            </a>
+        </section>
+
+        <!-- ============ 2. 成年宣言 ============ -->
+        <section class="section manifesto" id="manifesto">
+            <div class="wrap">
+                <div class="reveal">
+                    <span class="kicker">Today, You Are 18</span>
+                    <h2>今天起，你拥有更多自由，也拥有更大的世界。<span class="cn">成年不是终点，而是你第一次真正握住自己人生的方向盘。</span>
+                    </h2>
+                    <div class="rule" aria-hidden="true"></div>
+
+                    <div class="letter-body">
+                        <p>18 岁不是一条必须立刻成熟的分界线。</p>
+                        <p>它更像一张新的地图：你可以慢慢走，可以大胆选路，也可以一直保留热爱与天真。</p>
+                        <p>愿 SAVIOR 在每一次出发时都坚定，在每一个平凡的日子里都快乐。</p>
+                        <p>愿未来属于你，也由你定义。</p>
+                    </div>
+                </div>
+
+                <div class="planet-stage reveal" style="--d:.14s" aria-hidden="true">
+                    <span class="orbit"><i></i></span>
+                    <span class="orbit orbit-b"><i></i></span>
+                    <span class="planet"></span>
+                </div>
+
+                <!-- 可编辑：如需修改出生 / 成年年份，只改这一处即可 -->
+                <div class="timeline reveal" style="--d:.2s">
+                    2008.10.13 → 2026.10.13 → ∞
+                    <small>出生 · 十八岁 · 无限可能</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 3. 四颗星：18 岁的四种可能 ============ -->
+        <section class="section stars-section">
+            <div class="wrap">
+                <div class="reveal">
+                    <span class="kicker">Four Stars of 18</span>
+                    <h2>成年不是单一答案，而是多种可能。<span class="cn">把这四颗星带在身上，去走你自己的路。</span></h2>
+                    <div class="rule" aria-hidden="true"></div>
+                </div>
+
+                <div class="cards">
+                    <article class="card reveal" style="--d:.05s; --halo: radial-gradient(circle, rgba(244,213,141,.36), transparent 68%)">
+                        <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                            <path d="M20 5l2.6 10.4L33 18l-10.4 2.6L20 31l-2.6-10.4L7 18l10.4-2.6L20 5Z" />
+                            <path d="M31.5 27.5l1 3.2 3.2 1-3.2 1-1 3.2-1-3.2-3.2-1 3.2-1 1-3.2Z" />
+                        </svg>
+                        <span class="card-no">01</span>
+                        <h3>勇气<em>Courage</em></h3>
+                        <p>愿你敢于开始，也敢于重新开始。</p>
+                    </article>
+
+                    <article class="card reveal" style="--d:.13s; --halo: radial-gradient(circle, rgba(139,92,246,.42), transparent 68%)">
+                        <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                            <path d="M20 21c-5.4-2.2-8.6-6.6-9.6-13 5.6.4 9.2 3 10.6 7.8 1.4-4.8 5-7.4 10.6-7.8-1 6.4-4.2 10.8-9.6 13" />
+                            <path d="M20 21v13" />
+                            <path d="M20 27c2.6-1.6 5-1.6 7.2 0" />
+                        </svg>
+                        <span class="card-no">02</span>
+                        <h3>自由<em>Freedom</em></h3>
+                        <p>愿你拥有选择方向、节奏与生活方式的自由。</p>
+                    </article>
+
+                    <article class="card reveal" style="--d:.21s; --halo: radial-gradient(circle, rgba(249,168,212,.38), transparent 68%)">
+                        <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                            <path d="M20 34c-6.6-4.6-9.9-9.2-9.9-13.8A6.6 6.6 0 0 1 20 15.4a6.6 6.6 0 0 1 9.9 4.8C29.9 24.8 26.6 29.4 20 34Z" />
+                            <path d="M20 15.4c-.9-3.6-.3-6.6 1.8-9" />
+                        </svg>
+                        <span class="card-no">03</span>
+                        <h3>热爱<em>Passion</em></h3>
+                        <p>愿你一直对喜欢的事保留最初的心跳。</p>
+                    </article>
+
+                    <article class="card reveal" style="--d:.29s; --halo: radial-gradient(circle, rgba(255,249,240,.28), transparent 68%)">
+                        <svg class="card-icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                            <circle cx="20" cy="20" r="5.4" />
+                            <ellipse cx="20" cy="20" rx="15" ry="6.4" transform="rotate(-22 20 20)" />
+                            <circle cx="33.4" cy="14.8" r="1.9" />
+                        </svg>
+                        <span class="card-no">04</span>
+                        <h3>未来<em>Future</em></h3>
+                        <p>愿所有尚未抵达的日子，都值得期待。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 4. 十八岁的生日头像 ============ -->
+        <section class="section archive" id="archive">
+            <div class="wrap">
+                <div class="archive-head reveal">
+                    <span class="kicker">Memory Archive</span>
+                    <h2>SAVIOR 的十八岁光影收藏<span class="cn">每一张照片，都是时间留下的一颗星。这一张，是十八岁的你。</span></h2>
+                    <div class="rule" aria-hidden="true"></div>
+                </div>
+
+                <!--
+                  可编辑：SAVIOR 的生日头像 = savior/images/savior_birthday.jpg
+                  · 换图：用同名新文件覆盖即可（点击头像可放大预览）。
+                  · 文件缺失：自动退化为占位圆圈，不会出现浏览器破图图标。
+                  · 放大预览时显示的一句话在下面的 data-caption 中修改。
+                -->
+                <div class="portrait-stage">
+                    <figure class="frame portrait-frame reveal" data-caption="SAVIOR · 十八岁生日快乐">
+                        <img src="images/savior_birthday.jpg" alt="SAVIOR 的十八岁生日头像" decoding="async" />
+                        <span class="ph" aria-hidden="true">
+                            <span class="ph-ring"></span>
+                            <svg viewBox="0 0 24 24" focusable="false">
+                                <path d="M12 3.4l1.9 5.1 5.1 1.9-5.1 1.9L12 17.4l-1.9-5.1L5 10.4l5.1-1.9L12 3.4Z" />
+                                <path d="M18.6 16.4l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2Z" />
+                            </svg>
+                            <span class="ph-label">Savior · 18</span>
+                            <span class="ph-file">images/savior_birthday.jpg</span>
+                        </span>
+                    </figure>
+
+                    <div class="portrait-cap reveal" style="--d:.12s">
+                        <strong>SAVIOR · 18</strong>
+                        这一张，是十八岁的你。点击头像可放大查看；换图请覆盖 <code>images/savior_birthday.jpg</code>。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 5. 生日祝福信 ============ -->
+        <section class="section letter-section" id="letter">
+            <div class="wrap">
+                <div class="letter-paper reveal">
+                    <div class="letter-content">
+                        <span class="kicker">A Letter to SAVIOR</span>
+                        <h2>写给十八岁，也写给未来。<span class="cn">这封信没有期限，随时可以回来重读。</span></h2>
+                        <div class="rule" aria-hidden="true"></div>
+
+                        <p class="letter-salutation">亲爱的 SAVIOR：</p>
+                        <p>今天，你十八岁了。</p>
+                        <p>愿你不急着成为任何人期待的模样，先成为自己真正喜欢的样子。</p>
+                        <p>愿你有把生活过得闪闪发光的能力，也有在疲惫时拥抱自己的温柔。</p>
+                        <p>愿你在爱里被珍惜，在路上被看见，在每一次选择前都相信自己。</p>
+                        <p>生日快乐。</p>
+                        <p>从今天开始，世界会更大，而你也会更自由。</p>
+                    </div>
+
+                    <div class="letter-sign">
+                        <span class="with-love">With love</span>
+                        <!-- 可编辑：把下面的留白换成送祝福的人的名字 -->
+                        <span class="from">— From: <span class="blank">&nbsp;</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ 6. 结尾：驶向你的无限可能 ============ -->
+        <section class="section finale">
+            <span class="road" aria-hidden="true"></span>
+            <div class="track" aria-hidden="true"></div>
+
+            <h2>The World Is Waiting.<span class="shine">SAVIOR, Go Shine.</span></h2>
+            <p class="final-cn">18 岁生日快乐。<br />愿你前路有光，脚下有方向，心里始终有热爱。</p>
+            <p class="made-with">Made with love for SAVIOR · 18th Birthday</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="rule" aria-hidden="true"></div>
+        <div class="copyright">
+            &copy; 2026 <a href="https://tianyimc.com/">tianyimc.com</a> · 著作权所有 · All Rights Reserved
+        </div>
+        <div class="footer-icp">
+            <img class="moe-icon" src="../resources/moe_icon120.png" alt="萌ICP备图标" title="萌ICP备图标" />
+            <a href="https://icp.gov.moe/?keyword=20251234" rel="noreferrer noopener">萌ICP备20251234号</a>
+        </div>
+    </footer>
+
+    <button class="to-top" id="to-top" type="button" aria-label="回到顶部" title="回到顶部">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 20V6" />
+            <path d="M6 11l6-7 6 7" />
+        </svg>
+    </button>
+
+    <!-- 大图预览层（点击头像时打开） -->
+    <div class="lightbox" id="lightbox" hidden>
+        <figure class="lightbox-figure" role="dialog" aria-modal="true" aria-label="大图预览">
+            <button class="lightbox-close" type="button" id="lightbox-close" aria-label="关闭预览">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+            </button>
+            <img id="lightbox-img" alt="" />
+            <figcaption class="lightbox-cap" id="lightbox-cap"></figcaption>
+        </figure>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+            /* ==========================================================
+               1. 星空 / 光团 / 流星（Canvas，克制频率）
+               ========================================================== */
+            (function initStarfield() {
+                var canvas = document.getElementById('starfield');
+                if (!canvas || !canvas.getContext) return;
+
+                var ctx = canvas.getContext('2d');
+                var stars = [];
+                var orbs = [];
+                var shot = null;
+                var nextShot = 0;
+                var w = 0, h = 0;
+                var rafId = null;
+                var lastTime = 0;
+                var heroVisible = true;
+
+                function build() {
+                    var count = Math.round(Math.min(240, Math.max(70, (w * h) / 11000)));
+                    stars = [];
+                    for (var i = 0; i < count; i++) {
+                        stars.push({
+                            x: Math.random() * w,
+                            y: Math.random() * h,
+                            r: Math.random() * 1.25 + 0.25,
+                            base: Math.random() * 0.45 + 0.25,
+                            amp: Math.random() * 0.4 + 0.12,
+                            phase: Math.random() * Math.PI * 2,
+                            speed: Math.random() * 0.9 + 0.35,
+                            tint: Math.random() < 0.16 ? 'gold' : (Math.random() < 0.3 ? 'rose' : 'white')
+                        });
+                    }
+
+                    orbs = [];
+                    for (var j = 0; j < 4; j++) {
+                        orbs.push({
+                            x: Math.random() * w,
+                            y: Math.random() * h,
+                            r: Math.random() * 90 + 60,
+                            vx: (Math.random() - 0.5) * 0.11,
+                            vy: (Math.random() - 0.5) * 0.09,
+                            hue: ['139,92,246', '244,213,141', '249,168,212', '255,249,240'][j % 4],
+                            alpha: Math.random() * 0.05 + 0.035
+                        });
+                    }
+                }
+
+                function resize() {
+                    var rect = canvas.getBoundingClientRect();
+                    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    w = Math.max(1, Math.round(rect.width));
+                    h = Math.max(1, Math.round(rect.height));
+                    canvas.width = Math.round(w * dpr);
+                    canvas.height = Math.round(h * dpr);
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    build();
+                    if (reduceMotion) drawFrame(0, true);
+                }
+
+                function starColor(tint, a) {
+                    if (tint === 'gold') return 'rgba(244,213,141,' + a + ')';
+                    if (tint === 'rose') return 'rgba(249,168,212,' + a + ')';
+                    return 'rgba(255,249,240,' + a + ')';
+                }
+
+                function drawFrame(t, still) {
+                    ctx.clearRect(0, 0, w, h);
+
+                    /* 漂浮光团 */
+                    for (var i = 0; i < orbs.length; i++) {
+                        var o = orbs[i];
+                        if (!still) {
+                            o.x += o.vx;
+                            o.y += o.vy;
+                            if (o.x < -o.r) o.x = w + o.r;
+                            if (o.x > w + o.r) o.x = -o.r;
+                            if (o.y < -o.r) o.y = h + o.r;
+                            if (o.y > h + o.r) o.y = -o.r;
+                        }
+                        var g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, o.r);
+                        g.addColorStop(0, 'rgba(' + o.hue + ',' + o.alpha + ')');
+                        g.addColorStop(1, 'rgba(' + o.hue + ',0)');
+                        ctx.fillStyle = g;
+                        ctx.beginPath();
+                        ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    /* 星点（低频、克制的闪烁） */
+                    for (var s = 0; s < stars.length; s++) {
+                        var st = stars[s];
+                        var a = still ? st.base : st.base + Math.sin(t * 0.001 * st.speed + st.phase) * st.amp;
+                        if (a <= 0.02) continue;
+                        ctx.fillStyle = starColor(st.tint, Math.min(a, 1));
+                        ctx.beginPath();
+                        ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    /* 流星 */
+                    if (!still) {
+                        if (!shot && t > nextShot) {
+                            shot = {
+                                x: Math.random() * w * 0.8,
+                                y: Math.random() * h * 0.35,
+                                len: Math.random() * 130 + 90,
+                                speed: Math.random() * 0.22 + 0.2,
+                                life: 0
+                            };
+                        }
+                        if (shot) {
+                            shot.x += shot.speed * 1.6;
+                            shot.y += shot.speed;
+                            shot.life += 1;
+                            var fade = Math.max(0, 1 - shot.life / 130);
+                            var tailX = shot.x - shot.len;
+                            var tailY = shot.y - shot.len * 0.62;
+                            var lg = ctx.createLinearGradient(tailX, tailY, shot.x, shot.y);
+                            lg.addColorStop(0, 'rgba(244,213,141,0)');
+                            lg.addColorStop(1, 'rgba(255,249,240,' + (0.7 * fade) + ')');
+                            ctx.strokeStyle = lg;
+                            ctx.lineWidth = 1.3;
+                            ctx.beginPath();
+                            ctx.moveTo(tailX, tailY);
+                            ctx.lineTo(shot.x, shot.y);
+                            ctx.stroke();
+                            if (fade <= 0 || shot.x > w + 40 || shot.y > h + 40) {
+                                shot = null;
+                                nextShot = t + 8000 + Math.random() * 7000;
+                            }
+                        }
+                    }
+                }
+
+                function loop(t) {
+                    rafId = requestAnimationFrame(loop);
+                    if (!lastTime) lastTime = t;
+                    if (t - lastTime < 33) return;   /* 控制在 ~30fps，省电 */
+                    lastTime = t;
+                    drawFrame(t, false);
+                }
+
+                function start() {
+                    if (reduceMotion || rafId !== null || !heroVisible || document.hidden) return;
+                    lastTime = 0;
+                    rafId = requestAnimationFrame(loop);
+                }
+
+                function stop() {
+                    if (rafId !== null) {
+                        cancelAnimationFrame(rafId);
+                        rafId = null;
+                    }
+                }
+
+                resize();
+                window.addEventListener('resize', function () {
+                    window.clearTimeout(resize._t);
+                    resize._t = window.setTimeout(resize, 180);
+                });
+
+                if (reduceMotion) {
+                    drawFrame(0, true);
+                } else {
+                    nextShot = 2600;
+                    start();
+
+                    /* 滚出首屏 / 切到后台时暂停动画 */
+                    if ('IntersectionObserver' in window) {
+                        var hero = document.getElementById('hero');
+                        new IntersectionObserver(function (entries) {
+                            heroVisible = entries[0].isIntersecting;
+                            if (heroVisible) start(); else stop();
+                        }, { threshold: 0.02 }).observe(hero || canvas);
+                    }
+                    document.addEventListener('visibilitychange', function () {
+                        if (document.hidden) stop(); else start();
+                    });
+                }
+            })();
+
+            /* ==========================================================
+               2. 滚动淡入
+               ========================================================== */
+            (function initReveal() {
+                var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+                if (!items.length) return;
+
+                if (reduceMotion || !('IntersectionObserver' in window)) {
+                    items.forEach(function (el) { el.classList.add('is-in'); });
+                    return;
+                }
+
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-in');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+                items.forEach(function (el) { io.observe(el); });
+            })();
+
+            /* ==========================================================
+               3. 照片：占位 / 自动替换 / 大图预览
+               ========================================================== */
+            (function initPhotos() {
+                var lightbox = document.getElementById('lightbox');
+                var lbImg = document.getElementById('lightbox-img');
+                var lbCap = document.getElementById('lightbox-cap');
+                var lbClose = document.getElementById('lightbox-close');
+                if (!lightbox || !lbImg) return;
+
+                var lastFocus = null;
+                var open = false;
+
+                function openLightbox(frame) {
+                    var img = frame.querySelector('img');
+                    if (!img) return;
+                    lbImg.src = img.currentSrc || img.src;
+                    lbImg.alt = img.alt || '';
+                    lbCap.textContent = frame.getAttribute('data-caption') || '';
+                    lastFocus = document.activeElement;
+                    open = true;
+                    lightbox.hidden = false;
+                    document.body.classList.add('lb-open');
+                    if (lbClose) lbClose.focus();
+                }
+
+                function closeLightbox() {
+                    if (!open) return;
+                    open = false;
+                    lightbox.hidden = true;
+                    lbImg.removeAttribute('src');
+                    document.body.classList.remove('lb-open');
+                    if (lastFocus && lastFocus.focus) lastFocus.focus();
+                }
+
+                function bindFrame(frame) {
+                    if (frame.dataset.bound === '1') return;
+                    frame.dataset.bound = '1';
+                    frame.setAttribute('role', 'button');
+                    frame.setAttribute('tabindex', '0');
+                    var cap = frame.getAttribute('data-caption');
+                    frame.setAttribute('aria-label', '放大查看' + (cap ? '：' + cap : ''));
+
+                    frame.addEventListener('click', function () { openLightbox(frame); });
+                    frame.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+                            e.preventDefault();
+                            openLightbox(frame);
+                        }
+                    });
+                }
+
+                var frames = Array.prototype.slice.call(document.querySelectorAll('.frame'));
+
+                frames.forEach(function (frame) {
+                    var img = frame.querySelector('img');
+                    if (!img) return;
+
+                    function markLoaded() {
+                        frame.classList.add('is-loaded');
+                        frame.classList.remove('is-empty');
+                        bindFrame(frame);
+                    }
+
+                    function markMissing() {
+                        frame.classList.add('is-empty');
+                    }
+
+                    img.addEventListener('load', markLoaded);
+                    img.addEventListener('error', markMissing);
+
+                    /* 图片已缓存 / 已解析完成时，事件不会再触发，这里补一次判断 */
+                    if (img.complete) {
+                        if (img.naturalWidth > 0) markLoaded(); else markMissing();
+                    }
+                });
+
+                if (lbClose) lbClose.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', function (e) {
+                    if (e.target === lightbox) closeLightbox();
+                });
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && open) closeLightbox();
+                });
+            })();
+
+            /* ==========================================================
+               4. 背景音乐：WebAudio 实时合成（默认不播放）
+                  —— 柔和环境垫 + 五声音阶随机风铃，无需任何音频文件
+               ========================================================== */
+            (function initSound() {
+                var btn = document.getElementById('sound-toggle');
+                if (!btn) return;
+
+                var AC = window.AudioContext || window.webkitAudioContext;
+                if (!AC) {           /* 浏览器不支持时直接隐藏按钮，不打扰 */
+                    btn.hidden = true;
+                    return;
+                }
+
+                var label = btn.querySelector('.sound-label');
+                var ctx = null;
+                var master = null;
+                var chimeTimer = null;
+                var playing = false;
+                var NOTES = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50, 1174.66];
+
+                function ensureGraph() {
+                    if (ctx) return;
+                    ctx = new AC();
+
+                    master = ctx.createGain();
+                    master.gain.value = 0;
+                    master.connect(ctx.destination);
+
+                    var filter = ctx.createBiquadFilter();
+                    filter.type = 'lowpass';
+                    filter.frequency.value = 860;
+                    filter.Q.value = 0.5;
+                    filter.connect(master);
+
+                    var padGain = ctx.createGain();
+                    padGain.gain.value = 0.5;
+                    padGain.connect(filter);
+
+                    [110.00, 164.81, 220.00, 329.63].forEach(function (f, i) {
+                        var osc = ctx.createOscillator();
+                        osc.type = i % 2 ? 'triangle' : 'sine';
+                        osc.frequency.value = f;
+                        osc.detune.value = (i - 1.5) * 7;
+                        var g = ctx.createGain();
+                        g.gain.value = 0.16 / (i + 1);
+                        osc.connect(g);
+                        g.connect(padGain);
+                        osc.start();
+                    });
+
+                    /* 缓慢呼吸的 LFO */
+                    var lfo = ctx.createOscillator();
+                    lfo.frequency.value = 0.055;
+                    var lfoGain = ctx.createGain();
+                    lfoGain.gain.value = 0.16;
+                    lfo.connect(lfoGain);
+                    lfoGain.connect(padGain.gain);
+                    lfo.start();
+                }
+
+                function scheduleChime() {
+                    if (!playing || !ctx) return;
+                    var t = ctx.currentTime;
+                    var f = NOTES[Math.floor(Math.random() * NOTES.length)];
+                    var osc = ctx.createOscillator();
+                    osc.type = 'sine';
+                    osc.frequency.value = f;
+                    var g = ctx.createGain();
+                    g.gain.setValueAtTime(0.0001, t);
+                    g.gain.linearRampToValueAtTime(0.15, t + 0.03);
+                    g.gain.exponentialRampToValueAtTime(0.0008, t + 3.2);
+                    osc.connect(g);
+                    g.connect(master);
+                    osc.start(t);
+                    osc.stop(t + 3.4);
+                    chimeTimer = window.setTimeout(scheduleChime, 2400 + Math.random() * 4200);
+                }
+
+                function fadeTo(value, seconds) {
+                    if (!ctx || !master) return;
+                    var now = ctx.currentTime;
+                    master.gain.cancelScheduledValues(now);
+                    master.gain.setValueAtTime(master.gain.value, now);
+                    master.gain.linearRampToValueAtTime(value, now + seconds);
+                }
+
+                function sync() {
+                    btn.classList.toggle('is-on', playing);
+                    btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+                    var text = playing ? '静音' : '音乐';
+                    btn.setAttribute('aria-label', playing ? '关闭背景音乐' : '播放背景音乐');
+                    btn.setAttribute('title', playing ? '关闭背景音乐' : '播放背景音乐');
+                    if (label) label.textContent = text;
+                }
+
+                btn.addEventListener('click', function () {
+                    ensureGraph();
+                    playing = !playing;
+
+                    if (playing) {
+                        if (ctx.state === 'suspended' && ctx.resume) ctx.resume();
+                        fadeTo(0.13, 1.6);
+                        window.clearTimeout(chimeTimer);
+                        chimeTimer = window.setTimeout(scheduleChime, 900);
+                    } else {
+                        fadeTo(0, 1.3);
+                        window.clearTimeout(chimeTimer);
+                        window.setTimeout(function () {
+                            if (!playing && ctx && ctx.state === 'running' && ctx.suspend) ctx.suspend();
+                        }, 1500);
+                    }
+                    sync();
+                });
+
+                document.addEventListener('visibilitychange', function () {
+                    if (!ctx) return;
+                    if (document.hidden) {
+                        window.clearTimeout(chimeTimer);
+                        if (ctx.state === 'running' && ctx.suspend) ctx.suspend();
+                    } else if (playing) {
+                        if (ctx.state === 'suspended' && ctx.resume) ctx.resume();
+                        chimeTimer = window.setTimeout(scheduleChime, 1200);
+                    }
+                });
+
+                sync();
+            })();
+
+            /* ==========================================================
+               5. 回到顶部
+               ========================================================== */
+            (function initToTop() {
+                var btn = document.getElementById('to-top');
+                var hero = document.getElementById('hero');
+                if (!btn) return;
+
+                function show() { btn.classList.add('is-visible'); }
+                function hide() { btn.classList.remove('is-visible'); }
+
+                if ('IntersectionObserver' in window && hero) {
+                    new IntersectionObserver(function (entries) {
+                        if (entries[0].isIntersecting) hide(); else show();
+                    }, { threshold: 0.35 }).observe(hero);
+                } else {
+                    window.addEventListener('scroll', function () {
+                        if (window.pageYOffset > window.innerHeight * 0.7) show(); else hide();
+                    }, { passive: true });
+                }
+
+                btn.addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+                });
+            })();
+        })();
+    </script>
+</body>
+
+</html>
