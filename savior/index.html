@@ -883,6 +883,11 @@
         .portrait-frame {
             width: clamp(210px, 48vw, 330px);
             aspect-ratio: 1;
+            /* 构图微调（可直接改这两个值，页面即时生效）：
+               --portrait-shift 把头像内容整体下移，--portrait-zoom 是放大倍数。
+               下移量越大，画面底部被裁掉的部分越多。 */
+            --portrait-shift: 5%;
+            --portrait-zoom: 1.1;
         }
 
         .frame img {
@@ -892,16 +897,14 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transform: scale(1.03);
+            /* 先下移再放大，保证圆形展示框被完整填满，同时把画面内容整体下移 */
+            transform: translateY(var(--portrait-shift, 0%)) scale(calc(var(--portrait-zoom, 1) * 1.04));
             transition: opacity .7s ease, transform .9s cubic-bezier(.22, .8, .2, 1);
-            /* 径向蒙版：把浅色底的头像柔和融进深紫夜空 */
-            -webkit-mask-image: radial-gradient(circle closest-side at 50% 46%, #000 62%, rgba(0, 0, 0, .5) 86%, transparent 100%);
-            mask-image: radial-gradient(circle closest-side at 50% 46%, #000 62%, rgba(0, 0, 0, .5) 86%, transparent 100%);
         }
 
         .frame.is-loaded img {
             opacity: 1;
-            transform: none;
+            transform: translateY(var(--portrait-shift, 0%)) scale(var(--portrait-zoom, 1));
         }
 
         .frame.is-loaded {
@@ -909,7 +912,7 @@
         }
 
         .frame.is-loaded:hover img {
-            transform: scale(1.04);
+            transform: translateY(var(--portrait-shift, 0%)) scale(calc(var(--portrait-zoom, 1) * 1.04));
         }
 
         .frame.is-loaded:focus-visible {
@@ -917,7 +920,8 @@
             outline-offset: 5px;
         }
 
-        /* 边缘压暗，让浅色插画与夜空过渡自然 */
+        /* 与展示框同心淡出：正片叠底 + 展区底色，把浅色底图的边缘自然化进深紫夜空
+           （叠底层在图片之上、不随图片位移，所以头像始终与金环同心） */
         .frame::after {
             content: "";
             position: absolute;
@@ -925,7 +929,11 @@
             z-index: 2;
             border-radius: 50%;
             pointer-events: none;
-            background: radial-gradient(circle at 50% 42%, rgba(139, 92, 246, 0) 40%, rgba(26, 16, 52, .36) 78%, rgba(9, 11, 26, .8) 100%);
+            background: radial-gradient(circle closest-side at 50% 50%,
+                    rgba(58, 26, 70, 0) 50%,
+                    rgba(58, 26, 70, .45) 72%,
+                    rgba(54, 24, 68, .82) 88%,
+                    rgba(51, 21, 69, 1) 100%);
             mix-blend-mode: multiply;
         }
 
@@ -990,21 +998,11 @@
 
         .portrait-cap strong {
             display: block;
-            margin-bottom: 10px;
             font-family: var(--font-display);
             font-size: clamp(1.05rem, 3vw, 1.45rem);
             font-weight: 600;
             letter-spacing: .1em;
             color: var(--warm-white);
-        }
-
-        .portrait-cap code {
-            padding: 2px 7px;
-            border-radius: 6px;
-            background: rgba(244, 213, 141, .14);
-            color: var(--gold);
-            font-size: .88em;
-            letter-spacing: .04em;
         }
 
         /* ================= 5. 祝福信 ================= */
@@ -1089,14 +1087,10 @@
             color: var(--muted);
         }
 
-        /* 可编辑：把下面的下划线留白改成送祝福的人的名字 */
-        .letter-sign .from .blank {
-            display: inline-block;
-            min-width: clamp(120px, 24vw, 220px);
-            border-bottom: 1px dashed rgba(244, 213, 141, .5);
+        /* 署名：送祝福的人（换成任何名字都可以） */
+        .letter-sign .from .from-name {
             color: var(--warm-white);
-            text-align: center;
-            letter-spacing: .1em;
+            letter-spacing: .12em;
         }
 
         /* ================= 6. 结尾 ================= */
@@ -1577,7 +1571,7 @@
             <div class="wrap">
                 <div class="archive-head reveal">
                     <span class="kicker">Memory Archive</span>
-                    <h2>SAVIOR 的十八岁光影收藏<span class="cn">每一张照片，都是时间留下的一颗星。这一张，是十八岁的你。</span></h2>
+                    <h2>SAVIOR 的十八岁光影收藏<span class="cn">每一张照片，都是时间留下的一颗星。</span></h2>
                     <div class="rule" aria-hidden="true"></div>
                 </div>
 
@@ -1603,7 +1597,6 @@
 
                     <div class="portrait-cap reveal" style="--d:.12s">
                         <strong>SAVIOR · 18</strong>
-                        这一张，是十八岁的你。点击头像可放大查看；换图请覆盖 <code>images/savior_birthday.jpg</code>。
                     </div>
                 </div>
             </div>
@@ -1628,9 +1621,9 @@
                     </div>
 
                     <div class="letter-sign">
-                        <span class="with-love">With love</span>
-                        <!-- 可编辑：把下面的留白换成送祝福的人的名字 -->
-                        <span class="from">— From: <span class="blank">&nbsp;</span></span>
+                        <span class="with-love">With happiness</span>
+                        <!-- 署名：送祝福的人 -->
+                        <span class="from">— From: <span class="from-name">tianyimc</span></span>
                     </div>
                 </div>
             </div>
