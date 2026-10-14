@@ -13,7 +13,7 @@
 
     function showTip() {
         if (!tip) return;
-        tip.textContent = '点击“↩︎”恢复默认';
+        tip.textContent = '点击“↩”恢复跟随系统';
         tip.classList.add('is-visible');
         if (tipTimer) clearTimeout(tipTimer);
         tipTimer = setTimeout(() => {
@@ -23,17 +23,17 @@
 
     function updateControlState(mode) {
         if (!toggleButton) return;
-        const visualMode = mode === 'auto' ? getAutoTheme() : mode;
+        const visualMode = mode === 'auto' ? getAutoTheme() : mode === 'default' ? 'dark' : mode;
         toggleButton.textContent = visualMode === 'dark' ? '☽' : '☀︎';
         toggleButton.setAttribute('aria-label', visualMode === 'dark' ? '切换到日间模式' : '切换到夜间模式');
         toggleButton.setAttribute('title', visualMode === 'dark' ? '切换到日间模式' : '切换到夜间模式');
         if (resetButton) {
-            resetButton.hidden = mode === 'auto';
+            resetButton.hidden = mode === 'auto' || mode === 'default';
         }
     }
 
     function applyMode(mode) {
-        const resolved = mode === 'auto' ? getAutoTheme() : mode;
+        const resolved = mode === 'auto' ? getAutoTheme() : mode === 'default' ? 'dark' : mode;
         html.setAttribute('data-theme', resolved);
         updateControlState(mode);
     }
@@ -63,18 +63,18 @@
         }
     }
 
-    let currentMode = getStoredManualMode() || 'auto';
+    let currentMode = getStoredManualMode() || 'default';
     applyMode(currentMode);
 
     if (toggleButton) {
         toggleButton.addEventListener('click', () => {
-            const base = currentMode === 'auto' ? getAutoTheme() : currentMode;
+            const base = currentMode === 'auto' ? getAutoTheme() : currentMode === 'default' ? 'dark' : currentMode;
             const next = base === 'dark' ? 'light' : 'dark';
-            const fromAuto = currentMode === 'auto';
+            const fromDefault = currentMode === 'default' || currentMode === 'auto';
             currentMode = next;
             setStoredManualMode(next);
             applyMode(currentMode);
-            if (fromAuto) showTip();
+            if (fromDefault) showTip();
         });
     }
 
