@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="YIMC 个人数字空间，汇集站点服务、开源项目与内容记录。" />
+  <meta name="theme-color" content="#f5f2eb" />
+  <link rel="icon" href="../resources/www_logo.png" type="image/png" />
+  <title>YIMC — 个人数字空间</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f2eb;
+      --ink: #25241f;
+      --muted: #77746c;
+      --line: #d8d3c8;
+      --accent: #a33d2c;
+      --wash: #ebe6dc;
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #201f1b;
+      --ink: #eee9df;
+      --muted: #aaa397;
+      --line: #454139;
+      --accent: #e07a63;
+      --wash: #2b2923;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Source Han Sans CN", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      transition: background-color .25s ease, color .25s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .page { width: min(100% - 64px, 1040px); margin: 0 auto; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; min-height: 76px; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+    .brand img { width: 27px; height: 27px; object-fit: cover; border-radius: 50%; }
+    .brand-note { padding-left: 12px; border-left: 1px solid var(--line); color: var(--muted); font-size: 11px; font-weight: 400; letter-spacing: .04em; }
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .theme-btn { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); font: inherit; cursor: pointer; transition: background-color .18s ease, transform .18s ease; }
+    .theme-btn:hover { background: var(--wash); }
+    .theme-btn:active { transform: scale(.96); }
+    .theme-btn[hidden] { display: none; }
+    .theme-tip { position: absolute; top: 62px; right: max(32px, calc((100vw - 1040px) / 2)); z-index: 1; padding: 5px 9px; background: var(--ink); color: var(--paper); font-size: 11px; opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+    .theme-tip.is-visible { opacity: 1; }
+    .hero { display: grid; grid-template-columns: 1fr 260px; gap: 60px; align-items: end; padding: 92px 0 76px; }
+    .eyebrow, .section-label { margin: 0; color: var(--accent); font-size: 11px; font-weight: 650; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { margin: 17px 0 19px; font-family: "Iowan Old Style", "Baskerville", "Songti SC", "STSong", serif; font-size: clamp(56px, 9vw, 104px); font-weight: 500; letter-spacing: -.045em; line-height: 1.05; }
+    .hero-copy { max-width: 42ch; margin: 0; color: var(--muted); font-size: 16px; }
+    .profile { padding: 18px 0 0; border-top: 2px solid var(--ink); }
+    .profile-top { display: flex; align-items: center; justify-content: space-between; }
+    .profile-avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
+    .profile-id { color: var(--muted); font-size: 10px; letter-spacing: .12em; }
+    .profile h2 { margin: 19px 0 3px; font-size: 18px; font-weight: 650; }
+    .profile p { margin: 0; color: var(--muted); font-size: 13px; }
+    .profile-focus { display: flex; flex-direction: column; gap: 2px; margin-top: 20px; padding-top: 13px; border-top: 1px solid var(--line); font-size: 12px; }
+    .profile-focus span:first-child { color: var(--muted); }
+    .section { border-top: 1px solid var(--line); padding: 27px 0 0; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+    .section-heading h2 { margin: 4px 0 0; font-family: "Iowan Old Style", "Baskerville", "Songti SC", serif; font-size: 28px; font-weight: 500; letter-spacing: -.025em; }
+    .section-note { margin: 0 0 5px; color: var(--muted); font-size: 12px; }
+    .link-list { border-top: 1px solid var(--line); }
+    .link-card { border-bottom: 1px solid var(--line); transition: background-color .18s ease; }
+    .link-card:hover { background: var(--wash); }
+    .link-card a { display: grid; grid-template-columns: 52px minmax(150px, 1fr) minmax(220px, 1.4fr) 24px; align-items: baseline; gap: 16px; padding: 16px 12px; }
+    .card-number { color: var(--accent); font-family: Georgia, serif; font-size: 12px; font-variant-numeric: tabular-nums; }
+    .link-card strong { font-size: 15px; font-weight: 600; }
+    .card-description { color: var(--muted); font-size: 13px; }
+    .card-arrow { justify-self: end; color: var(--muted); transition: color .18s ease, transform .18s ease; }
+    .link-card:hover .card-arrow { color: var(--accent); transform: translate(2px, -2px); }
+    .poem-box { display: grid; grid-template-columns: 90px 1fr; gap: 14px; margin: 39px 0 0; padding: 16px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .poem-label { color: var(--accent); }
+    #jinrishici-sentence { max-width: 65ch; }
+    .footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 8px; padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .footer-icp { display: inline-flex; align-items: center; gap: 6px; }
+    .footer-icp a { text-decoration: underline; text-underline-offset: 3px; }
+    .moe-icon { width: 15px; height: 15px; }
+    @media (max-width: 700px) {
+      .page { width: min(100% - 36px, 560px); }
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 67px 0 55px; }
+      .profile { max-width: 420px; }
+      .link-card a { grid-template-columns: 34px minmax(0, 1fr) 24px; gap: 10px; padding: 15px 6px; }
+      .card-description { grid-column: 2; grid-row: 2; }
+      .card-arrow { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+    }
+    @media (max-width: 440px) {
+      .page { width: calc(100% - 32px); }
+      .masthead { min-height: 66px; }
+      .brand-note { font-size: 9px; }
+      .theme-btn { width: 34px; height: 34px; }
+      h1 { font-size: clamp(54px, 16vw, 72px); }
+      .hero-copy { font-size: 14px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
+      .poem-box { grid-template-columns: 1fr; gap: 3px; }
+      .footer { flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="YIMC 首页"><img src="../resources/www_logo.png" alt="" /><span>YIMC</span><span class="brand-note">个人数字空间</span></a>
+      <div class="header-actions" role="group" aria-label="主题切换">
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="切换到日间模式" title="切换到日间模式">☼</button>
+        <button class="theme-btn" type="button" data-theme-reset aria-label="恢复跟随系统" title="恢复跟随系统" hidden>↩</button>
+      </div>
+    </header>
+    <div class="theme-tip" data-theme-tip aria-live="polite"></div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">一些项目 · 一些记录</p>
+        <h1 id="hero-title">都在这里。</h1>
+        <p class="hero-copy">这里汇集我维护的服务、开源项目和内容记录。</p>
+      </div>
+      <aside class="profile" aria-labelledby="profile-title">
+        <div class="profile-top"><img class="profile-avatar" src="../resources/www_logo.png" alt="YIMC 网站标志" /><span class="profile-id">PROFILE / 01</span></div>
+        <h2 id="profile-title">tianyimc</h2>
+        <p>MCE服务器服主，一个业余的项目维护者</p>
+        <div class="profile-focus"><span>正在维护</span><span>YIMC · ProjectMe · ZeroSend</span></div>
+      </aside>
+    </section>
+    <section class="section" aria-labelledby="navigation-title">
+      <div class="section-heading"><div><p class="section-label">目录 / INDEX</p><h2 id="navigation-title">站点与项目</h2></div><p class="section-note">选择一个入口，继续浏览。</p></div>
+      <div class="link-list">
+        <article class="link-card"><a href="../mce/"><span class="card-number">01</span><strong>MCE 服务器</strong><span class="card-description">服务器介绍与相关服务。</span><span class="card-arrow" aria-hidden="true">↗</span></a></article>
+        <article class="link-card"><a href="https://blog.tianyimc.com/" target="_blank" rel="noreferrer noopener"><span class="card-number">02</span><strong>YIMC Blog</strong><span class="card-description">公告、文章与内容记录。</span><span class="card-arrow" aria-hidden="true">↗</span></a></article>
+        <article class="link-card"><a href="https://eula.tianyimc.com/" target="_blank" rel="noreferrer noopener"><span class="card-number">03</span><strong>MCE EULA</strong><span class="card-description">MCE服务器最终用户许可协议</span><span class="card-arrow" aria-hidden="true">↗</span></a></article>
+        <article class="link-card"><a href="https://github.com/tianyimc/ProjectMe" target="_blank" rel="noreferrer noopener"><span class="card-number">04</span><strong>ProjectMe</strong><span class="card-description">无后端的个人文集网页，配有本地 PowerShell 管理器与自定义插件支持。</span><span class="card-arrow" aria-hidden="true">↗</span></a></article>
+        <article class="link-card"><a href="https://github.com/tianyimc/ZeroSend" target="_blank" rel="noreferrer noopener"><span class="card-number">05</span><strong>ZeroSend</strong><span class="card-description">基于 Cloudflare Workers 的开源阅后即焚文件分享工具，支持端到端加密。</span><span class="card-arrow" aria-hidden="true">↗</span></a></article>
+      </div>
+      <div class="poem-box"><span class="poem-label">今日诗词</span><span id="jinrishici-sentence" aria-live="polite">正在加载今日诗词...</span></div>
+    </section>
+    <footer class="footer"><span>&copy; 2026 tianyimc.com. All rights reserved.</span><span class="footer-icp"><img src="../resources/moe_icon120.png" class="moe-icon" alt="萌ICP备图标" /><a href="https://icp.gov.moe/?keyword=20251234" rel="noreferrer noopener">萌ICP备20251234号</a></span></footer>
+  </main>
+  <script src="../js/theme-switch.js"></script>
+  <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+</body>
+</html>
