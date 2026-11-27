@@ -92,14 +92,16 @@
     .focus { padding-left: 26px; border-left: 1px solid var(--hairline); }
     .focus-label { display: block; margin-bottom: 3px; color: var(--secondary); font-size: 12px; }
     .focus-value { font-size: 13px; font-weight: 550; }
-    .projects { position: relative; isolation: isolate; padding: 70px 22px 74px; background: radial-gradient(ellipse at 18% 25%, rgba(41,151,255,.13), transparent 34%), radial-gradient(ellipse at 82% 62%, rgba(175,126,255,.12), transparent 32%), var(--surface); }
+    .projects { position: relative; isolation: isolate; padding: 70px 22px 74px; background: var(--page); }
+    .projects::before { position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 18% 25%, rgba(41,151,255,.13), transparent 34%), radial-gradient(ellipse at 82% 62%, rgba(175,126,255,.12), transparent 32%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 88%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 88%, transparent 100%); content: ""; pointer-events: none; }
     .section-head { width: min(100%, 940px); margin: 0 auto 34px; text-align: center; }
     .section-head h2 { margin: 0; font-size: clamp(34px, 5vw, 48px); font-weight: 650; letter-spacing: -.055em; line-height: 1.12; }
     .section-head p { margin: 10px 0 0; color: var(--secondary); font-size: 17px; }
     .project-grid { width: min(100%, 940px); display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; margin: 0 auto; }
     .project-card { grid-column: span 2; min-height: 276px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; overflow: hidden; padding: 31px 26px 25px; border: 1px solid var(--glass-edge); border-radius: 22px; background: linear-gradient(145deg, var(--glass-card), color-mix(in srgb, var(--glass-card) 72%, transparent)); text-align: center; box-shadow: 0 14px 40px rgba(0,0,0,.11), inset 0 1px rgba(255,255,255,.36), inset 0 0 0 1px rgba(255,255,255,.045); backdrop-filter: saturate(190%) blur(26px); -webkit-backdrop-filter: saturate(190%) blur(26px); transition: transform .22s cubic-bezier(.23, 1, .32, 1), box-shadow .22s ease, border-color .22s ease; }
-    .project-card:nth-child(4) { grid-column: 2 / span 2; }
-    .project-card:nth-child(5) { grid-column: 4 / span 2; }
+    .project-card:nth-child(4) { grid-column: 1 / span 2; }
+    .project-card:nth-child(5) { grid-column: 3 / span 2; }
+    .project-card:nth-child(6) { grid-column: 5 / span 2; }
     .project-card:hover { transform: translateY(-3px); border-color: var(--glass-edge); box-shadow: 0 20px 50px rgba(0,0,0,.16), inset 0 1px rgba(255,255,255,.6), inset 0 0 0 1px rgba(255,255,255,.08); }
     .project-card:active { transform: scale(.99); }
     .project-body { width: 100%; }
@@ -116,8 +118,7 @@
     .moe-icon { width: 15px; height: 15px; }
     @media (max-width: 850px) {
       .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .project-card, .project-card:nth-child(4), .project-card:nth-child(5) { grid-column: auto; }
-      .project-card:nth-child(5) { width: calc(50% - 9px); grid-column: 1 / -1; justify-self: center; }
+      .project-card, .project-card:nth-child(4), .project-card:nth-child(5), .project-card:nth-child(6) { grid-column: auto; }
     }
     @media (max-width: 650px) {
       .nav { width: calc(100% - 32px); }
@@ -130,7 +131,7 @@
       .focus { padding: 14px 0 0; border-top: 1px solid var(--hairline); border-left: 0; }
       .projects { padding: 54px 16px 56px; }
       .project-grid { grid-template-columns: 1fr; gap: 12px; }
-      .project-card, .project-card:nth-child(5) { width: 100%; grid-column: auto; min-height: 240px; border-radius: 18px; }
+      .project-card { width: 100%; grid-column: auto; min-height: 240px; border-radius: 18px; }
       .poem { align-items: center; flex-direction: column; gap: 3px; margin-top: 36px; }
       footer { width: calc(100% - 32px); flex-direction: column; gap: 8px; }
     }
@@ -167,6 +168,7 @@
         <a class="project-card" href="https://eula.tianyimc.com/" target="_blank" rel="noreferrer noopener"><div class="project-body"><p class="project-index">03 / DOCUMENT</p><h3>MCE EULA</h3><p>MCE服务器最终用户许可协议</p><span class="text-link">阅读协议 <span aria-hidden="true">›</span></span></div></a>
         <a class="project-card" href="https://github.com/tianyimc/ProjectMe" target="_blank" rel="noreferrer noopener"><div class="project-body"><p class="project-index">04 / OPEN SOURCE</p><h3>ProjectMe</h3><p>无后端的个人文集网页，带有本地管理器与自定义插件支持。</p><span class="text-link">在 GitHub 查看 <span aria-hidden="true">›</span></span></div></a>
         <a class="project-card" href="https://github.com/tianyimc/ZeroSend" target="_blank" rel="noreferrer noopener"><div class="project-body"><p class="project-index">05 / OPEN SOURCE</p><h3>ZeroSend</h3><p>基于 Cloudflare Workers 的阅后即焚文件分享工具，支持端到端加密。</p><span class="text-link">在 GitHub 查看 <span aria-hidden="true">›</span></span></div></a>
+        <a class="project-card" href="https://github.com/tianyimc/BigNaiWa-Pro" target="_blank" rel="noreferrer noopener"><div class="project-body"><p class="project-index">06 / OPEN SOURCE</p><h3>合成大奶蛙Pro</h3><p>纯前端合成游戏，采用 PBD 物理与贴图轮廓碰撞，无依赖、无构建，点击即玩。</p><span class="text-link">在 GitHub 查看 <span aria-hidden="true">›</span></span></div></a>
       </div>
       <div class="poem"><span class="poem-label">今日诗词</span><span id="jinrishici-sentence" aria-live="polite">正在加载今日诗词...</span></div>
     </section>
